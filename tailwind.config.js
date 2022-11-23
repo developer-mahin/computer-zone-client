@@ -8,9 +8,9 @@ module.exports = {
       {
         computerZone: {
 
-          primary: "#0FCFEC",
+          primary: "#1AE4FF",
 
-          secondary: "#19D3AE",
+          secondary: "#5066D8",
 
           accent: "#3A4256",
 
