@@ -12,7 +12,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 ## Main Requirements
 
-1. Your homepage will have a **navbar** , a banner/slider, Advertised items, second-hand **product categories** section and a realistic **footer**.
+1. Your homepage will have a **navbar** , a banner/slider, Advertised items, second-hand **product categories** section and a realistic **footer**. 
 
 2. Add **one** extra section on the home page. Make sure it is unique and relevant to your website.
 
