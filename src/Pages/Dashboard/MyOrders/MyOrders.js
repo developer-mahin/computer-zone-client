@@ -14,11 +14,30 @@ const MyOrders = () => {
         }
     })
 
-    console.log(allBookings);
-
     return (
-        <div>
-
+        <div className="overflow-x-auto">
+            <table className="table w-full">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        allBookings.map((booking, i) => <tr
+                            key={booking._id}
+                        >
+                            <th>{i + 1}</th>
+                            <td className='font-semibold'>{booking.itemName}</td>
+                            <td className='font-semibold'>{booking.itemPrice}</td>
+                            <td><button className='bg-red-600 btn border-0 text-white btn-sm'>Delete</button></td>
+                        </tr>)
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };

@@ -32,7 +32,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <ul>
+            <ul className='mt-6'> 
                 <li>
                     {
                         userRole === "buyer" && <BuyerMenu></BuyerMenu>
