@@ -14,8 +14,15 @@ const BrandPartner = () => {
     return (
         <div>
             <div style={partner}>
-                <div className='container mx-auto'>
-                <h2 className='text-3xl font-bold py-9'>Our Brand / Partners</h2>
+                <div className='container mx-auto py-9'>
+                    <div className="">
+                        <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
+                            BRAND
+                        </p>
+                        <h2 className="text-3xl font-bold">
+                            Our Brand / Partners
+                        </h2>
+                    </div>
                 </div>
             </div>
             <div className='container mx-auto lg:py-14 py-5 px-4'>

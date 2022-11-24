@@ -17,7 +17,7 @@ const SignUp = () => {
         handleSubmit,
     } = useForm();
 
-    const {createUser, updateUserName, googleSignIn } =
+    const { createUser, updateUserName, googleSignIn } =
         useContext(AuthContext);
     const [signUpError, setSignUpError] = useState("");
     const navigate = useNavigate();
@@ -30,6 +30,7 @@ const SignUp = () => {
         const email = data.email;
         const password = data.password;
         const image = data.image[0];
+        const userRole = event.target.option.value
 
         const formDate = new FormData();
         formDate.append("image", image);
@@ -53,8 +54,10 @@ const SignUp = () => {
                                 saveUserFromDB(
                                     data.name,
                                     data.email,
-                                    imageData.data.display_url
+                                    imageData.data.display_url,
+                                    userRole
                                 );
+                                navigate("/")
                                 setLoading(false)
                             })
                             .catch((err) => {
@@ -72,39 +75,38 @@ const SignUp = () => {
     }
 
 
-    const saveUserFromDB = (name, email, image) => {
+    const saveUserFromDB = (name, email, image, userRole) => {
         const userInfo = {
-          name,
-          email,
-          image,
+            name,
+            email,
+            image,
+            userRole
         };
         fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
         })
-          .then((res) => res.json())
-          .then((data) => {
-            // getAccessToken(email);
-          });
-      };
-
-
-
-
+            .then((res) => res.json())
+            .then((data) => {
+                // getAccessToken(email);
+            });
+    };
 
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-          .then(() => {
-            toast.success("successfully login");
-          })
-          .catch((error) => {
-            toast.error(error.message);
-          });
-      };
+            .then(() => {
+                toast.success("successfully login");
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    };
+
+
 
     return (
         <div className="max-w-[1000px] mx-auto py-9 px-3">
@@ -152,6 +154,27 @@ const SignUp = () => {
                                     required: "This files is requires",
                                 })}
                             />
+                            {errors.image && (
+                                <p className="text-red-400">{errors.image?.message}</p>
+                            )}
+                        </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text font-medium">Select One</span>
+                            </label>
+                            <select
+                                name="option"
+                                id=""
+                                className='input input-bordered w-full'
+                                {...register("option", {
+                                    required: "This files is requires",
+                                })}>
+                                <option value="seller">Seller</option>
+                                <option value="user">User</option>
+                            </select>
+                            {errors.option && (
+                                <p className="text-red-400">{errors.option?.message}</p>
+                            )}
                         </div>
                         <div className="form-control w-full">
                             <label className="label">
@@ -226,7 +249,7 @@ const SignUp = () => {
                             <div className="divider">OR</div>
                             <div className="grid h-20 card rounded-box place-items-center">
                                 <button
-                                onClick={handleGoogleSignIn}
+                                    onClick={handleGoogleSignIn}
                                     className="border-2 border-black w-full rounded-lg flex items-center justify-center gap-1 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary border-none px-6 py-3 text-white hover:rounded-full"
                                 >
                                     <FaGoogle className="text-2xl"></FaGoogle>
