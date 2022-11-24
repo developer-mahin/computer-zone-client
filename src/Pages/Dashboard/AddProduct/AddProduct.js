@@ -1,35 +1,87 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { FileUploader } from "react-drag-drop-files";
+import toast from 'react-hot-toast';
+import SmallSpinner from '../../../components/Spinner/SmallSpinner';
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 const AddProduct = () => {
+    const [file, setFile] = useState(null);
+    const handleChange = (file) => {
+        setFile(file);
 
+    };
     const { user } = useContext(AuthContext)
+    const [loading, setLoading] = useState(false)
+    const [date, setDate] = useState("")
+    const sliceDate = date.toString().slice(0, 24)
+
 
 
     const handleAddProduct = (event) => {
+        setLoading(true)
         event.preventDefault();
         const form = event.target;
         const product_name = form.productName.value;
-        const price = form.price.value;
         const type = form.type.value;
-        const description = form.description.value; 
+        const description = form.description.value;
         const resale_price = form.resale_price.value;
         const original_price = form.original_price.value;
         const years_of_use = form.years_of_use.value;
         const category = form.category.value;
         const location = form.location.value;
-        const productImg = form.image.value
+        const rating = form.rating.value;
 
-        // const formData = new FormData()
-        // formData.append("image", productImg)
+        const formData = new FormData()
+        formData.append("image", file)
 
-        console.log(productImg)
+        fetch(`https://api.imgbb.com/1/upload?key=77f09a682af2d728593ff4efd38c7386`, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                const productData = {
+                    category_id: category,
+                    rating: rating,
+                    seller_name: user?.displayName,
+                    seller_img: user?.photoURL,
+                    verify: false,
+                    location: location,
+                    resale_price: resale_price,
+                    original_price: original_price,
+                    total_view: 302,
+                    years_of_use: years_of_use,
+                    name: product_name,
+                    published_date: sliceDate,
+                    picture: data.data.display_url,
+                    condition_type: type,
+                    description
+                }
+                // save product in db
+                fetch("http://localhost:5000/addProduct", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(productData)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            toast.success("Product successfully added")
+                            form.reset()
+                            setLoading(false)
+                        }
+                    })
+                    .catch(err => {
+                        toast.error(err.message)
+                        setLoading(false)
+                    })
 
+            })
 
-
-        // const productData = {
-        //     // category_id
-        // }
     }
 
 
@@ -49,18 +101,10 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Product name"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
-                        <div className="col-span-full sm:col-span-3">
-                            <label className="text-sm">Price</label>
-                            <input
-                                name="price"
-                                type="number"
-                                placeholder="Price"
-                                className="input input-bordered w-full"
-                            />
-                        </div>
 
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">Condition Type</label>
@@ -81,16 +125,18 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Description"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
-                        <div className="col-span-full sm:col-span-2">
+                        <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">Resale price</label>
                             <input
                                 name="resale_price"
-                                type="number"
+                                type="text"
                                 placeholder="Resale price"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
@@ -98,9 +144,10 @@ const AddProduct = () => {
                             <label className="text-sm">Original price</label>
                             <input
                                 name="original_price"
-                                type="number"
+                                type="text"
                                 placeholder="Original price"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
@@ -111,6 +158,7 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Years of use"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
@@ -121,6 +169,7 @@ const AddProduct = () => {
                                 type="number"
                                 placeholder="Category id"
                                 className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
@@ -132,19 +181,37 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Location"
                                 className="input input-bordered w-full"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm">Rating</label>
+                            <input
+                                name="rating"
+                                type="text"
+                                placeholder="Location"
+                                className="input input-bordered w-full"
+                                required
                             />
                         </div>
 
 
-                        <div className="col-span-full sm:col-span-2">
-                            <label className="text-sm">Product Image</label>
+                        <div className="col-span-full sm:col-span-2 flex items-center gap-2">
+                            <label className="text-sm">Check And Add Todays Date </label>
                             <input
-                                name="image"
-                                type="file"
-                                placeholder=""
-                                className="w-full"
-                                accept="image/png, image/jpeg"
+                                onClick={() => setDate(new Date())}
+                                name="date"
+                                type="checkbox"
+                                placeholder="Location"
+                                className=""
+                                required
                             />
+                        </div>
+                        <div className="col-span-full sm:col-span-3">
+                            <label className="text-sm">Product Image</label>
+                            <div>
+                                <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -160,6 +227,7 @@ const AddProduct = () => {
                                 type="text"
                                 value={user?.displayName}
                                 disabled
+                                required
                                 className="input input-bordered w-full"
                             />
                         </div>
@@ -170,11 +238,16 @@ const AddProduct = () => {
                                 type="email"
                                 value={user?.email}
                                 disabled
+                                required
                                 className="input input-bordered w-full"
                             />
                         </div>
                         <div className="col-span-full">
-                            <button type="submit" className="btn btn-outline ">Add product</button>
+                            <button type="submit" className="btn btn-outline ">
+                                {
+                                    loading ? <SmallSpinner></SmallSpinner> : "Add product"
+                                }
+                            </button>
                         </div>
                     </div>
 
