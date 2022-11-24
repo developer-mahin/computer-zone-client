@@ -28,7 +28,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users: 
 
-      **Buyers will see:** My orders(see bonus requirement 7),
+      **Buyers will see:** My orders(see bonus requirement 7), ✅
 
       **Sellers will see:** Add A product (See Requirement 8), My Products(see requirement 9), My buyers(this one is optional).
 

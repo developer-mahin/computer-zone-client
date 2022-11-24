@@ -20,21 +20,58 @@ const MyOrders = () => {
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Product</th>
-                        <th>Price</th>
+                        <th>Image</th>
+                        <th className='w-40'>Product</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        allBookings.map((booking, i) => <tr
+                        allBookings.map((booking, i) =>
+                            <tr
                             key={booking._id}
-                        >
-                            <th>{i + 1}</th>
-                            <td className='font-semibold'>{booking.itemName}</td>
-                            <td className='font-semibold'>{booking.itemPrice}</td>
-                            <td><button className='bg-red-600 btn border-0 text-white btn-sm'>Delete</button></td>
-                        </tr>)
+                            >
+                                <th>
+                                    <label>
+                                        {i + 1}
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="">
+                                        <div className="avatar">
+                                            <div className="w-32 rounded-xl h-auto">
+                                                <img src={booking.itemImage} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </td>
+                                <td className='font-medium'>
+                                {booking.itemName}
+                                    <br />
+                                    <span className="badge badge-ghost badge-sm">Price: {booking.itemPrice}</span>
+                                </td>
+                                <td>
+                                <td><button className='btn btn-primary border-0 btn-sm'>pay</button></td>
+                                </td>
+                            </tr>
+
+
+                        // <tr
+                        //     
+                        // >
+                        //     <th>{i + 1}</th>
+                        //     <td className='font-semibold'>
+
+                        //         <img src= className="w-24 h-auto" alt="" />
+
+                        //     </td>
+                        //     <td className='font-semibold w-40'></td>
+                        //     <td className='font-semibold'></td>
+                        //     
+                        // </tr>
+                        
+                        )
                     }
                 </tbody>
             </table>

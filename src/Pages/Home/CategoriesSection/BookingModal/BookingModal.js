@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../context/AuthProvider/AuthProvider';
 
 const BookingModal = ({ modalData, setModalData }) => {
 
-    const { name, resale_price } = modalData;
+    const { name, resale_price, picture } = modalData;
     const { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
 
@@ -17,6 +17,7 @@ const BookingModal = ({ modalData, setModalData }) => {
         const location = form.location.value;
 
         const bookingInfo = {
+            itemImage: picture,
             itemName: name,
             itemPrice: resale_price,
             userName: user?.displayName,

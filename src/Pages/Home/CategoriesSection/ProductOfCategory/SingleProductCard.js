@@ -2,7 +2,9 @@ import React from 'react';
 
 const SingleProductCard = ({ product, setModalData }) => {
 
-    const { location, name, original_price, published_date, picture, rating, resale_price, seller, years_of_use } = product;
+    console.log(product);
+
+    const { location, name, original_price, published_date, picture, rating, resale_price, seller_img, verify, seller_name, years_of_use } = product;
 
     return (
         <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
@@ -18,7 +20,7 @@ const SingleProductCard = ({ product, setModalData }) => {
                             <div>
                                 <ul>
                                     <li>
-                                        ✅ Ratings: {rating.number}
+                                        ✅ Ratings: {rating}
                                     </li>
                                     <li>
                                         ✅ Used Of {years_of_use}
@@ -33,12 +35,12 @@ const SingleProductCard = ({ product, setModalData }) => {
                                 <div className='flex items-center gap-2'>
 
                                     <div>
-                                        <img className='w-16 h-16 rounded-full' src={seller.img} alt="" />
+                                        <img className='w-16 h-16 rounded-full' src={seller_img} alt="" />
                                     </div>
                                     <div className='flex'>
-                                        <h3>{seller.name}</h3>
+                                        <h3>{seller_name}</h3>
                                         {
-                                            seller.verify && <img className='w-4 h-4 rounded-full' src="https://i.ibb.co/VMVn1n3/Eo-circle-light-blue-checkmark-svg-removebg-preview.png" alt="" />
+                                            verify && <img className='w-4 h-4 rounded-full' src="https://i.ibb.co/VMVn1n3/Eo-circle-light-blue-checkmark-svg-removebg-preview.png" alt="" />
                                         }
                                     </div>
                                 </div>
