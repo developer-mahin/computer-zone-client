@@ -10,18 +10,22 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userRole, setUserRole] = useState("")
+    const [userRoleLoading, setUserRoleLoading] = useState(false)
 
+
+    // create user with email and password
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
-
-
+    // login user with email and password 
     const loginUser = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
+    // update user name and photo 
     const updateUserName = (name, photoURL) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
@@ -29,10 +33,12 @@ const AuthProvider = ({ children }) => {
         });
     };
 
+    // google sign in
     const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider);
     };
 
+    // log out user
     const logOut = () => {
         setLoading(true);
         return signOut(auth)
@@ -46,9 +52,22 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
+
+    useEffect(() => {
+        setUserRoleLoading(true)
+        fetch(`http://localhost:5000/user/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setUserRole(data.userRole)
+                setUserRoleLoading(false)
+            })
+    }, [user?.email])
+
     const authInfo = {
         user,
         loading,
+        userRoleLoading,
+        userRole,
         createUser,
         loginUser,
         updateUserName,

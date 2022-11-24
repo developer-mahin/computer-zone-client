@@ -4,12 +4,6 @@ const SingleProductCard = ({ product, setModalData }) => {
 
     const { location, name, original_price, published_date, picture, rating, resale_price, seller, years_of_use } = product;
 
-
-    // const includeModalData = {
-    //     userName: user?.displayName, 
-    //     userEmail: user?.displa
-    // }
-
     return (
         <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
             <div className="grid lg:grid-cols-2 gap-5">

@@ -51,7 +51,7 @@ const SignUp = () => {
                         updateUserName(data.name, imageData.data.display_url)
                             .then(() => {
                                 // save user in db
-                                saveUserFromDB(
+                                saveUserInDB(
                                     data.name,
                                     data.email,
                                     imageData.data.display_url,
@@ -79,13 +79,14 @@ const SignUp = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user
-                saveUserFromDB(
+                saveUserInDB(
                     user?.displayName,
                     user?.email,
                     user?.photoURL,
                     "buyer"
                 )
                 toast.success("successfully login");
+                navigate("/")
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -93,7 +94,7 @@ const SignUp = () => {
     };
 
 
-    const saveUserFromDB = (name, email, image, userRole) => {
+    const saveUserInDB = (name, email, image, userRole) => {
         const userInfo = {
             name,
             email,

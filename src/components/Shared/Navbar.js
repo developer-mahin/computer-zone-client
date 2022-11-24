@@ -73,7 +73,7 @@ const Navbar = () => {
                     {isDropdownOpen && (
                         <div className='absolute z-20 w-56 lg:right-0 py-2 mt-2 bg-white rounded-md shadow-xl '>
                             <Link
-                                to='/Dashboard'
+                                to='/dashboard'
                                 className='flex items-center px-3 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-gray-100 '
                             >
                                 <svg
