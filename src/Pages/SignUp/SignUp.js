@@ -75,6 +75,24 @@ const SignUp = () => {
     }
 
 
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user
+                saveUserFromDB(
+                    user?.displayName,
+                    user?.email,
+                    user?.photoURL,
+                    "buyer"
+                )
+                toast.success("successfully login");
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    };
+
+
     const saveUserFromDB = (name, email, image, userRole) => {
         const userInfo = {
             name,
@@ -94,19 +112,6 @@ const SignUp = () => {
                 // getAccessToken(email);
             });
     };
-
-
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(() => {
-                toast.success("successfully login");
-            })
-            .catch((error) => {
-                toast.error(error.message);
-            });
-    };
-
-
 
     return (
         <div className="max-w-[1000px] mx-auto py-9 px-3">
@@ -169,8 +174,8 @@ const SignUp = () => {
                                 {...register("option", {
                                     required: "This files is requires",
                                 })}>
+                                <option value="buyer">Buyer</option>
                                 <option value="seller">Seller</option>
-                                <option value="user">User</option>
                             </select>
                             {errors.option && (
                                 <p className="text-red-400">{errors.option?.message}</p>

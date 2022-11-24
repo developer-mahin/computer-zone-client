@@ -54,15 +54,44 @@ const Login = () => {
     // };
 
 
+
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then(() => {
+            .then((result) => {
+                const user = result.user
+                saveUserFromDB(
+                    user?.displayName,
+                    user?.email,
+                    user?.photoURL,
+                    "buyer"
+                )
                 toast.success("successfully login");
             })
             .catch((error) => {
                 toast.error(error.message);
             });
     };
+
+    const saveUserFromDB = (name, email, image, userRole) => {
+        const userInfo = {
+            name,
+            email,
+            image,
+            userRole
+        };
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // getAccessToken(email);
+            });
+    };
+
 
     return (
         <div className="max-w-[1000px] mx-auto  py-9 px-3">

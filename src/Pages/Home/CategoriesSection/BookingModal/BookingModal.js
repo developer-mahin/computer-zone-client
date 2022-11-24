@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import SmallSpinner from '../../../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../../../context/AuthProvider/AuthProvider';
 
 const BookingModal = ({ modalData, setModalData }) => {
 
     const { name, resale_price } = modalData;
     const { user } = useContext(AuthContext)
-
+    const [loading, setLoading] = useState(false)
 
     const handleBooking = (event) => {
+        setLoading(true)
         event.preventDefault()
         const form = event.target;
         const phone = form.phone.value;
@@ -22,7 +25,24 @@ const BookingModal = ({ modalData, setModalData }) => {
             userLocation: location
         }
 
-        console.log(bookingInfo)
+        fetch("http://localhost:5000/booking", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(bookingInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success(`Successfully ${name} booked`)
+                    setLoading(false)
+                }
+            })
+            .catch(err => {
+                setLoading(false)
+                toast.error(err.message)
+            })
 
     }
 
@@ -34,7 +54,7 @@ const BookingModal = ({ modalData, setModalData }) => {
                     <label htmlFor="computer-zone-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div>
                         <div>
-                            <h2 className='font-semibold'>{name}</h2>
+                            <h2 className='font-semibold pt-5'>{name}</h2>
                         </div>
                         <form
                             onSubmit={handleBooking}
@@ -78,8 +98,10 @@ const BookingModal = ({ modalData, setModalData }) => {
                             />
 
                             <button
-                            type="submit" className="w-full btn btn-accent">
-                                Submit
+                                type="submit" className="w-full btn btn-accent">
+                                {
+                                    loading ? <SmallSpinner></SmallSpinner> : "Submit"
+                                }
                             </button>
                         </form>
                     </div>
