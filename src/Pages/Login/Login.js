@@ -23,7 +23,7 @@ const Login = () => {
 
 
     const handleLogin = (data, event) => {
-        setLoading(true) 
+        setLoading(true)
         loginUser(data.email, data.password)
             .then((result) => {
                 const user = result.user;
@@ -32,6 +32,7 @@ const Login = () => {
                 event.target.reset();
                 toast.success("successfully login");
                 setLoading(false);
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 toast.error(error.message);
