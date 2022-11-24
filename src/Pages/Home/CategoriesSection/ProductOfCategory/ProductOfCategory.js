@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import SingleProductCard from './SingleProductCard';
 
 const ProductOfCategory = () => {
     const products = useLoaderData();
-
-
+    const [modalData, setModalData] = useState({})
 
     return (
         <div className="flex flex-col max-w-4xl mx-auto p-6 space-y-4 sm:p-10 bg-gray-200 rounded">
@@ -14,14 +14,17 @@ const ProductOfCategory = () => {
                 {
 
                     products.map(product => <SingleProductCard
-                    
                         key={product._id}
                         product={product}
-
+                        setModalData={setModalData}
                     ></SingleProductCard>)
                 }
-               
+
             </ul>
+            <BookingModal
+                modalData={modalData}
+                setModalData={setModalData}
+            ></BookingModal>
         </div>
     );
 };
