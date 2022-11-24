@@ -23,6 +23,7 @@ const Login = () => {
 
 
     const handleLogin = (data, event) => {
+        setLoading(true) 
         loginUser(data.email, data.password)
             .then((result) => {
                 const user = result.user;
