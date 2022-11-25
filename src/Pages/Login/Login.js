@@ -9,7 +9,6 @@ import toast from 'react-hot-toast';
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-
     const {
         register,
         formState: { errors },
@@ -27,33 +26,16 @@ const Login = () => {
         loginUser(data.email, data.password)
             .then((result) => {
                 const user = result.user;
-                // setLoginUserEmail(data.email);
-                //   getAccessToken(data.email);
                 event.target.reset();
                 toast.success("successfully login");
+                getAccessToken(data.email)
                 setLoading(false);
-                navigate(from, { replace: true })
             })
             .catch((error) => {
                 toast.error(error.message);
                 setLoading(false);
             });
     }
-
-
-    // const getAccessToken = (email) => {
-    //     fetch(`https://doctor-portal-server-nine.vercel.app/jwt?email=${email}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             if (data.accessToken) {
-    //                 localStorage.setItem("doctors-portal-token", data.accessToken);
-    //                 navigate(from, { replace: true });
-    //             }
-    //         });
-    // };
-
-
 
     const handleGoogleSignIn = () => {
         googleSignIn()
@@ -62,7 +44,7 @@ const Login = () => {
                 saveUserInDB(
                     user?.displayName,
                     user?.email,
-                    user?.photoURL.status(403),
+                    user?.photoURL,
                     "buyer"
                 )
                 toast.success("successfully login");
@@ -89,9 +71,21 @@ const Login = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                // getAccessToken(email);
+                getAccessToken(email);
             });
     };
+
+
+    const getAccessToken = (email) => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.accessToken) {
+              localStorage.setItem("access-token", data.accessToken);
+              navigate(from, { replace: true });
+            }
+          });
+      };
 
 
     return (

@@ -34,7 +34,7 @@ const UserRoleProvider = ({ children }) => {
 
     const info = {
         userRole,
-        refetch,
+        // refetch,
         userRoleLoading
     }
 

@@ -59,7 +59,6 @@ const SignUp = () => {
                                     userRole, 
                                     location
                                 );
-                                navigate("/")
                                 setLoading(false)
                             })
                             .catch((err) => {
@@ -113,9 +112,23 @@ const SignUp = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                // getAccessToken(email);
+                getAccessToken(email);
             });
     };
+
+
+    const getAccessToken = (email) => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.accessToken) {
+              localStorage.setItem("access-token", data.accessToken);
+              navigate("/");
+            }
+          });
+      };
+
 
     return (
         <div className="container mx-auto py-9 px-3">
