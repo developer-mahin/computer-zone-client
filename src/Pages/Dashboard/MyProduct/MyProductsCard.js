@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 
 const MyProductsCard = ({ product, refetch }) => {
     const { description, name, original_price, picture, published_date, resale_price, years_of_use, _id, status } = product;
+    const [loading, setLoading] = useState(false)
+
 
     const handleSold = (id) => {
         const change = {
@@ -19,12 +22,40 @@ const MyProductsCard = ({ product, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.acknowledged){
+                if (data.acknowledged) {
                     toast.success("Status update available to sold")
                     refetch()
                 }
             })
+            .catch(err => {
+                toast.error(err.message)
+            })
     }
+
+
+    const handleAddToAdvertise = () => {
+        setLoading(true)
+        fetch("http://localhost:5000/advertise", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Product successfully added in the advertise section")
+                    setLoading(false)
+                }
+            })
+            .catch(err => {
+                toast.error(err.message)
+                setLoading(false)
+            })
+    }
+
 
     return (
         <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:pb-20 pb-9">
@@ -65,9 +96,13 @@ const MyProductsCard = ({ product, refetch }) => {
 
                         </button>
                         <button
+                            onClick={handleAddToAdvertise}
                             className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 lg:w-1/2 w-full"
                         >
-                            Add To Advertise
+                            {
+                                loading ? <SmallSpinner></SmallSpinner> : "Add To Advertise"
+                            }
+
                         </button>
                     </div>
                 </div>
