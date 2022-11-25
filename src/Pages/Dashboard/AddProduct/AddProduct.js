@@ -29,9 +29,10 @@ const AddProduct = () => {
         const resale_price = form.resale_price.value;
         const original_price = form.original_price.value;
         const years_of_use = form.years_of_use.value;
-        const category = form.category.value;
+        const category = parseInt(form.category.value);
         const location = form.location.value;
         const rating = form.rating.value;
+
 
         const formData = new FormData()
         formData.append("image", file)
@@ -64,7 +65,8 @@ const AddProduct = () => {
                 fetch("http://localhost:5000/addProduct", {
                     method: "POST",
                     headers: {
-                        "content-type": "application/json"
+                        "content-type": "application/json", 
+                        authorization: `bearer ${localStorage.getItem("access-token")}`
                     },
                     body: JSON.stringify(productData)
                 })

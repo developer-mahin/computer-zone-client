@@ -32,7 +32,7 @@ const SingleProductCard = ({ product, setModalData }) => {
                                 <div className='flex items-center gap-2'>
 
                                     <div>
-                                        <img className='w-16 h-16 rounded-full' src={seller_img} alt="" />
+                                        <img className='w-16 h-16 rounded-full object-cover' src={seller_img} alt="" />
                                     </div>
                                     <div className='flex'>
                                         <h3>{seller_name}</h3>
