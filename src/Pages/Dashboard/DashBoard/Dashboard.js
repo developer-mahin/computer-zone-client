@@ -3,7 +3,7 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Dashboard = () => {
 
-const {userRole} = useContext(AuthContext)
+    const { userRole } = useContext(AuthContext)
 
     return (
         <div className='h-screen text-gray-700 flex flex-col justify-center items-center pb-16'>

@@ -1,18 +1,15 @@
 import React from 'react';
 
 const SingleProductCard = ({ product, setModalData }) => {
-
-    console.log(product);
-
     const { location, name, original_price, published_date, picture, rating, resale_price, seller_img, verify, seller_name, years_of_use } = product;
 
     return (
         <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
-            <div className="grid lg:grid-cols-2 gap-5">
+            <div className="grid lg:grid-cols-3 gap-5">
                 <div>
                     <img className="w-full rounded-xl outline-none" src={picture} alt="Polaroid camera" />
                 </div>
-                <div className="flex flex-col justify-between w-full pb-4">
+                <div className="flex lg:col-span-2 flex-col justify-between w-full pb-4">
                     <div className="flex justify-between w-full pb-2 space-x-2">
                         <div className="space-y-1">
                             <h3 className="text-lg font-semibold leading-snug sm:pr-8">{name}</h3>

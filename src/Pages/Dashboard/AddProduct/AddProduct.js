@@ -47,6 +47,7 @@ const AddProduct = () => {
                     rating: rating,
                     seller_name: user?.displayName,
                     seller_img: user?.photoURL,
+                    seller_email: user?.email,
                     verify: false,
                     location: location,
                     resale_price: resale_price,
@@ -86,7 +87,17 @@ const AddProduct = () => {
 
 
     return (
-        <section className="p-6  ">
+        <section className="p-6">
+            <div className='container mx-auto py-9'>
+                <div className="">
+                    <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
+                        Add product
+                    </p>
+                    <h2 className="text-3xl font-bold">
+                        Add Your Products
+                    </h2>
+                </div>
+            </div>
             <form onSubmit={handleAddProduct} className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
                 <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm ">
                     <div className="space-y-2 col-span-full lg:col-span-1">

@@ -1,9 +1,36 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const MyProduct = () => {
+    const { user } = useContext(AuthContext)
+
+    const { data: allProducts = [] } = useQuery({
+
+        queryKey: ["getAllProducts", user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/my-product?email=${user?.email}`)
+            const data = await res.json()
+            return data;
+        }
+
+    })
+
+
+    console.log(allProducts)
+
     return (
-        <div>
-            
+        <div className="p-6">
+            <div className='container mx-auto py-9'>
+                <div className="">
+                    <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
+                        My products
+                    </p>
+                    <h2 className="text-3xl capitalize font-bold">
+                        See Your products
+                    </h2>
+                </div>
+            </div>
         </div>
     );
 };
