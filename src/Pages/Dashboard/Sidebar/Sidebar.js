@@ -6,9 +6,7 @@ import SellerMenu from '../SellerMenu/SellerMenu';
 
 
 const Sidebar = () => {
-
     const { userRole, user } = useContext(AuthContext)
-
 
     return (
         <div className="menu p-4 w-80 text-base-content rounded bg-gray-200">
@@ -33,24 +31,15 @@ const Sidebar = () => {
             </div>
 
             <ul className='mt-6'>
-                <li>
-                    {
-                        userRole === "admin" && <AdminMenu></AdminMenu>
-                    }
-                </li>
-
-                <li>
-                    {
-                        userRole === "seller" && <SellerMenu></SellerMenu>
-                    }
-                </li>
-                <li>
-                    {
-                        userRole === "buyer" && <BuyerMenu></BuyerMenu>
-                    }
-                </li>
-
-
+                {
+                    userRole === "admin" && <li><AdminMenu></AdminMenu></li>
+                }
+                {
+                    userRole === "seller" && <li><SellerMenu></SellerMenu></li>
+                }
+                {
+                    userRole === "buyer" && <li><BuyerMenu></BuyerMenu></li>
+                }
             </ul>
         </div>
     );
