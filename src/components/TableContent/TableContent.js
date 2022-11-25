@@ -1,7 +1,21 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
-const TableContent = ({data, index}) => {
-    const {email, image, name} = data
+const TableContent = ({data, index, refetch}) => {
+    const {email, image, name, location, _id} = data
+
+    const handleDelete = (id) =>{
+        fetch(`http://localhost:5000/deleteAPerson/${id}`, {
+            method: "DELETE", 
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.deletedCount > 0){
+                toast.success("Successfully deleted this user")
+                refetch()
+            }
+        })
+    }
 
     return (
         <tr>
@@ -19,17 +33,15 @@ const TableContent = ({data, index}) => {
                     </div>
                     <div>
                         <div className="font-bold">{name}</div>
-                        <div className="text-sm opacity-50">United States</div>
+                        <div className="text-sm opacity-50">{location}</div>
                     </div>
                 </div>
             </td>
             <td>
-                {email}
-                <br />
-                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                <span>{email}</span>
             </td>
             <td>
-                <button className='btn bg-red-600 border-none text-white btn-xs'>Delete</button>
+                <button  onClick={()=>handleDelete(_id)} className='btn bg-red-600 border-none text-white btn-xs'>Delete</button>
             </td>
         </tr>
     );

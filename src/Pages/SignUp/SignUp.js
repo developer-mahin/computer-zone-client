@@ -31,6 +31,7 @@ const SignUp = () => {
         const password = data.password;
         const image = data.image[0];
         const userRole = event.target.option.value
+        const location = data.location
 
         const formDate = new FormData();
         formDate.append("image", image);
@@ -55,7 +56,8 @@ const SignUp = () => {
                                     data.name,
                                     data.email,
                                     imageData.data.display_url,
-                                    userRole
+                                    userRole, 
+                                    location
                                 );
                                 navigate("/")
                                 setLoading(false)
@@ -83,7 +85,7 @@ const SignUp = () => {
                     user?.displayName,
                     user?.email,
                     user?.photoURL,
-                    "buyer"
+                    "buyer",
                 )
                 toast.success("successfully login");
                 navigate("/")
@@ -94,12 +96,13 @@ const SignUp = () => {
     };
 
 
-    const saveUserInDB = (name, email, image, userRole) => {
+    const saveUserInDB = (name, email, image, userRole, location) => {
         const userInfo = {
             name,
             email,
             image,
-            userRole
+            userRole, 
+            location
         };
         fetch("http://localhost:5000/users", {
             method: "POST",
@@ -115,7 +118,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="max-w-[1000px] mx-auto py-9 px-3">
+        <div className="container mx-auto py-9 px-3">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div>
                     <Lottie animationData={registerJson} />
@@ -180,6 +183,22 @@ const SignUp = () => {
                             </select>
                             {errors.option && (
                                 <p className="text-red-400">{errors.option?.message}</p>
+                            )}
+                        </div>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text font-medium">Your Location</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Your Location"
+                                className="input input-bordered w-full"
+                                {...register("location", {
+                                    required: "Location is required",
+                                })}
+                            />
+                            {errors.location && (
+                                <p className="text-red-400">{errors.location?.message}</p>
                             )}
                         </div>
                         <div className="form-control w-full">

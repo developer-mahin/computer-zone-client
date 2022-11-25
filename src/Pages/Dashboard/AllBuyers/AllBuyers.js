@@ -4,7 +4,7 @@ import TableContent from '../../../components/TableContent/TableContent';
 
 const AllBuyers = () => {
 
-    const { data: allBuyers = [] } = useQuery({
+    const { data: allBuyers = [] , refetch} = useQuery({
 
         queryKey: ["allBuyers"],
         queryFn: async () => {
@@ -38,6 +38,7 @@ const AllBuyers = () => {
                             key={buyer._id}
                             data={buyer}
                             index={index}
+                            refetch={refetch}
                         ></TableContent>)
                     }
 

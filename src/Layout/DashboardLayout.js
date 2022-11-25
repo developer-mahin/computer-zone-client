@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Footer from '../components/Shared/Footer';
 import Navbar from '../components/Shared/Navbar';
 import BigSpinner from '../components/Spinner/BigSpinner';
-import { AuthContext } from '../context/AuthProvider/AuthProvider';
+import { UserRoleContext } from '../context/UserRoleProvider/UserRoleProvider';
 import Sidebar from '../Pages/Dashboard/Sidebar/Sidebar';
 
 const DashboardLayout = () => {
-    const { userRoleLoading, user } = useContext(AuthContext);
+    const {userRoleLoading } = useContext(UserRoleContext)
 
     return (
 

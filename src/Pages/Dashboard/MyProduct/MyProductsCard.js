@@ -39,7 +39,7 @@ const MyProductsCard = ({ product }) => {
 
                         </button>
                         <button
-                            className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 w-full "
+                            className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 lg:w-1/2 w-full"
                         >
                             Add To Advertise
                         </button>

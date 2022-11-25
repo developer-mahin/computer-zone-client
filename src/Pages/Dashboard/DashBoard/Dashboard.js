@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { UserRoleContext } from '../../../context/UserRoleProvider/UserRoleProvider';
 
 const Dashboard = () => {
 
-    const { userRole } = useContext(AuthContext)
+    const { userRole } = useContext(UserRoleContext)
 
     return (
         <div className='h-screen text-gray-700 flex flex-col justify-center items-center pb-16'>

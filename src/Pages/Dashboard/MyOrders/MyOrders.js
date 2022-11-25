@@ -29,7 +29,7 @@ const MyOrders = () => {
                     {
                         allBookings.map((booking, i) =>
                             <tr
-                            key={booking._id}
+                                key={booking._id}
                             >
                                 <th>
                                     <label>
@@ -43,34 +43,19 @@ const MyOrders = () => {
                                                 <img src={booking.itemImage} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </td>
                                 <td className='font-medium'>
-                                {booking.itemName}
+                                    <span>{booking.itemName}</span>
                                     <br />
                                     <span className="badge badge-ghost badge-sm">Price: {booking.itemPrice}</span>
                                 </td>
-                                <td>
+
                                 <td><button className='btn btn-primary border-0 btn-sm'>pay</button></td>
-                                </td>
+
                             </tr>
 
-
-                        // <tr
-                        //     
-                        // >
-                        //     <th>{i + 1}</th>
-                        //     <td className='font-semibold'>
-
-                        //         <img src= className="w-24 h-auto" alt="" />
-
-                        //     </td>
-                        //     <td className='font-semibold w-40'></td>
-                        //     <td className='font-semibold'></td>
-                        //     
-                        // </tr>
-                        
                         )
                     }
                 </tbody>

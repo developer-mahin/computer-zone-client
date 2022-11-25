@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { UserRoleContext } from '../../../context/UserRoleProvider/UserRoleProvider';
 import AdminMenu from '../AdminMenu/AdminMenu';
 import BuyerMenu from '../BuyerMenu/BuyerMenu';
 import SellerMenu from '../SellerMenu/SellerMenu';
 
 
 const Sidebar = () => {
-    const { userRole, user } = useContext(AuthContext)
+    const {userRole} = useContext(UserRoleContext) 
+    const { user } = useContext(AuthContext)
 
     return (
         <div className="menu p-4 w-80 text-base-content rounded bg-gray-200">

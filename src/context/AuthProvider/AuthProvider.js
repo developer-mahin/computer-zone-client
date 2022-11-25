@@ -10,8 +10,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [userRole, setUserRole] = useState("")
-    const [userRoleLoading, setUserRoleLoading] = useState(false)
+
 
 
     // create user with email and password
@@ -53,21 +52,11 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-    useEffect(() => {
-        setUserRoleLoading(true)
-        fetch(`http://localhost:5000/user/${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setUserRole(data.userRole)
-                setUserRoleLoading(false)
-            })
-    }, [user?.email])
+
 
     const authInfo = {
         user,
         loading,
-        userRoleLoading,
-        userRole,
         createUser,
         loginUser,
         updateUserName,
