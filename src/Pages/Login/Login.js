@@ -62,7 +62,7 @@ const Login = () => {
                 saveUserInDB(
                     user?.displayName,
                     user?.email,
-                    user?.photoURL,
+                    user?.photoURL.status(403),
                     "buyer"
                 )
                 toast.success("successfully login");
