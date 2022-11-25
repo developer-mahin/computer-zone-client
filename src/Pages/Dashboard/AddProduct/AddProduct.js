@@ -59,7 +59,8 @@ const AddProduct = () => {
                     published_date: sliceDate,
                     picture: data.data.display_url,
                     condition_type: type,
-                    description
+                    description, 
+                    status: "Available"
                 }
                 // save product in db
                 fetch("http://localhost:5000/addProduct", {
