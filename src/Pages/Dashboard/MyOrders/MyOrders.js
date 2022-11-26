@@ -24,7 +24,7 @@ const MyOrders = () => {
 
     return (
         <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto bg-slate-500">
                 <table className="table w-full">
                     <thead>
                         <tr>

@@ -21,13 +21,13 @@ const MyProduct = () => {
     })
 
     return (
-        <div className="p-6 ">
+        <div className="p-6 bg-[#1e2b47]">
             <div className='container mx-auto py-9'>
                 <div className="">
                     <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
                         My products
                     </p>
-                    <h2 className="text-3xl capitalize font-bold">
+                    <h2 className="text-3xl capitalize font-bold text-gray-300">
                         See Your products
                     </h2>
                 </div>

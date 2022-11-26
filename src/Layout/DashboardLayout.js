@@ -18,7 +18,7 @@ const DashboardLayout = () => {
                             className="drawer-toggle"
                         />
 
-                        <div className="drawer-content bg-gray-100">
+                        <div className="drawer-content bg-[#1e2b47]">
 
                             <Outlet></Outlet>
                         </div>

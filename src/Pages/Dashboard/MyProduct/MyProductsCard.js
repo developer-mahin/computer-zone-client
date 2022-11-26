@@ -68,13 +68,13 @@ const MyProductsCard = ({ product, refetch }) => {
                                 Published Data: {published_date}
                             </p>
                         </div>
-                        <h2 className="max-w-lg mb-3 font-sans text-xl font-bold tracking-tight text-gray-900 lg:text-2xl sm:text-4xl sm:leading-none">
+                        <h2 className="max-w-lg mb-3 font-sans text-xl font-bold tracking-tight text-gray-300 lg:text-2xl sm:text-3xl sm:leading-none">
                             {name}
                         </h2>
-                        <p className="text-base text-gray-700 md:text-lg">
+                        <p className="text-base text-gray-300 md:text-lg">
                             {description}
                         </p>
-                        <ul>
+                        <ul className='text-gray-300'>
                             <li>
                                 🔹 Original price: {original_price}
                             </li>

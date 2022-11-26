@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import TableContent from '../../../components/TableContent/TableContent';
+import "./Allbuyers.css"
+
 
 const AllBuyers = () => {
 
@@ -27,7 +29,7 @@ const AllBuyers = () => {
                     <div className="overflow-x-auto w-full">
                         <table className="table w-full">
                             <thead>
-                                <tr>
+                                <tr className='text-gray-300'>
                                     <th>
                                         <label>
                                             No.

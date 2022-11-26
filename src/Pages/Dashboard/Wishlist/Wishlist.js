@@ -68,9 +68,9 @@ const Wishlist = () => {
             {
                 loading ? <BigSpinner></BigSpinner> : <>
 
-                <div className="flex flex-col container mx-auto p-6 space-y-4 sm:p-10">
-                    <h2 className="text-xl font-semibold">Your cart</h2>
-                    <ul className="flex flex-col divide-y divide-gray-700">
+                <div className="flex flex-col container mx-auto p-6 space-y-4 sm:p-10 ">
+                    <h2 className="text-xl font-semibold text-gray-300">Your cart</h2>
+                    <ul className="flex flex-col divide-y divide-gray-400">
 
                         {
                             wishlists?.map(wishlist => <SingleWishlist
