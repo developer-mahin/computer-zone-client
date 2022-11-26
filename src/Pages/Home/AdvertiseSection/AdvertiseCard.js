@@ -1,8 +1,6 @@
 import React from 'react';
 
 const AdvertiseCard = ({ data }) => {
-
-    console.log(data)
     const {picture, name, description} = data;
 
     return (

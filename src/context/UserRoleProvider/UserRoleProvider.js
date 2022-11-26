@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+/* import { useQuery } from '@tanstack/react-query';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
@@ -20,17 +20,17 @@ const UserRoleProvider = ({ children }) => {
     //         })
     // }, [user?.email])
 
-    const { data: roleUser =[], refetch} = useQuery({
-        queryKey: ["userRole", user?.email,],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user/${user?.email}`)
-            const data = await res.json()
-            setUserRole(data.userRole)
-            setUserRoleLoading(false)
-            return data
-        }
+    // const { data: roleUser =[], refetch} = useQuery({
+    //     queryKey: ["userRole", user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/user/${user?.email}`)
+    //         const data = await res.json()
+    //         setUserRole(data.userRole)
+    //         setUserRoleLoading(false)
+    //         return data
+    //     }
 
-    })
+    // })
 
     const info = {
         userRole,
@@ -45,4 +45,4 @@ const UserRoleProvider = ({ children }) => {
     );
 };
 
-export default UserRoleProvider;
+export default UserRoleProvider; */

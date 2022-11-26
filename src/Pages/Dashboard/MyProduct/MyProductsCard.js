@@ -94,14 +94,13 @@ const MyProductsCard = ({ product, refetch }) => {
                             {
                                 status
                             }
-
                         </button>
                         <button
                             onClick={() => {
                                 handleAddToAdvertise();
                                 setIsDisabled(!isDisabled)
                             }}
-                            disabled={isDisabled}
+                            disabled={status === "Sold" && true}
                             className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 lg:w-1/2 w-full"
                         >
                             {

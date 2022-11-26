@@ -1,13 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useContext, useState } from 'react';
-import toast from 'react-hot-toast';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const MyOrders = () => {
-    const { user, loading } = useContext(AuthContext)
-    // const [allBookings, setAllBookings] = useState([])
-
+    const { user } = useContext(AuthContext)
 
     const { data: allBookings = [] } = useQuery({
         queryKey: ["all-bookings", user?.email],
@@ -22,22 +19,6 @@ const MyOrders = () => {
         }
     })
 
-    // axios.get(`http://localhost:5000/bookings?email=${user?.email}`, {
-    //     headers: {
-    //         authorization: `bearer ${localStorage.getItem("access-token")}`
-    //     }
-    // })
-
-    //     .then(function (response) {
-    //         setAllBookings(response.data)
-    //         return response;
-    //     })
-    //     .catch(function (error) {
-    //         toast.error(error.message)
-    //     })
-    //     .finally(function () {
-    //         // always executed
-    //     });
 
 
 
@@ -50,13 +31,14 @@ const MyOrders = () => {
                             <th>No.</th>
                             <th>Image</th>
                             <th className='w-40'>Product</th>
-                            <th>Action</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         <>
                             {
                                 allBookings.map((booking, i) =>
+                                    // console.log(booking)
                                     <tr
                                         key={booking._id}
                                     >
@@ -80,8 +62,19 @@ const MyOrders = () => {
                                             <br />
                                             <span className="badge badge-ghost badge-sm">Price: {booking.itemPrice}</span>
                                         </td>
+                                        <td>
+                                            {
+                                                !booking.paid && <Link to={`/dashboard/payment/${booking.productId}`}>
 
-                                        <td><button className='btn btn-primary border-0 btn-sm'>pay</button></td>
+                                                    <button className='btn btn-primary border-0 btn-sm px-6'>pay</button>
+
+                                                </Link>
+                                            }
+                                            {
+                                                booking.paid && <span className='text-success text-sm'>Paid</span>
+
+                                            }
+                                        </td>
 
                                     </tr>
 

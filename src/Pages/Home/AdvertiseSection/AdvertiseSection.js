@@ -3,8 +3,6 @@ import AdvertiseCard from './AdvertiseCard';
 
 const AdvertiseSection = ({ availableData }) => {
 
-    console.log(availableData)
-
     return (
         <div className='container mx-auto lg:py-14 py-7'>
             <div className=" text-center pb-6">

@@ -39,15 +39,15 @@ const Navbar = () => {
                 </Link>
             </li>
             <div className='flex items-center lg:justify-between flex-col lg:flex-row'>
-                <div className="navbar bg-base-100 p-0 w-fit">
+                <div className="navbar p-0 w-fit">
                     <div className="flex-none">
                         <ul className="menu menu-horizontal p-0">
                             <li tabIndex={0}>
                                 <Link className='font-medium' >
                                     Categories
-                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                                    <svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                                 </Link>
-                                <ul className="p-2 bg-base-100 z-50">
+                                <ul className="p-2 bg-base-100 text-black font-medium rounded-xl z-50">
 
                                     {
                                         categories.map(category => <li
@@ -99,7 +99,7 @@ const Navbar = () => {
                 <div className='relative flex'>
                     <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className='relative z-10 text-gray-700 border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40  focus:ring-blue-300 focus:ring  focus:outline-none lg:px-2 flex items-center'
+                        className='relative z-10 text-gray-700 border border-transparent rounded-md  lg:px-2 flex items-center'
                     >
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -148,7 +148,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="">
+        <div className="bg-[#0F0826] text-white">
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">

@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../context/AuthProvider/AuthProvider';
 
 const BookingModal = ({ modalData, setModalData }) => {
 
-    const { name, resale_price, picture } = modalData;
+    const { name, resale_price, picture, _id, status } = modalData;
     const { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
 
@@ -23,7 +23,9 @@ const BookingModal = ({ modalData, setModalData }) => {
             userName: user?.displayName,
             userEmail: user?.email,
             userPhone: phone,
-            userLocation: location
+            userLocation: location,
+            productId: _id,
+            status
         }
 
         fetch("http://localhost:5000/booking", {
