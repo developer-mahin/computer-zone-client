@@ -7,6 +7,7 @@ import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../Pages/Dashboard/DashBoard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
+import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ProductOfCategory from "../Pages/Home/CategoriesSection/ProductOfCategory/ProductOfCategory";
 import Home from "../Pages/Home/Home";
@@ -36,10 +37,6 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignUp></SignUp>
             },
-            // {
-            //     path: "/products",
-            //     element: <SignUp></SignUp>
-            // },
             {
                 path: "/category/:id",
                 element: <PrivateRoute><ProductOfCategory></ProductOfCategory></PrivateRoute>,
@@ -59,7 +56,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/my-orders",
-                element: <MyOrders></MyOrders>
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+            },
+            {
+                path: "/dashboard/wishlist",
+                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
             },
             {
                 path: "/dashboard/add-product",

@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import logo from "../../Assets/images/logo.png"
+import { useQuery } from '@tanstack/react-query';
 
 
 const Navbar = () => {
@@ -19,6 +20,17 @@ const Navbar = () => {
             });
     };
 
+
+    const { data: categories = [] } = useQuery({
+        queryKey: ["categories"],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:5000/categories")
+            const data = await res.json()
+            return data;
+        }
+    })
+
+
     const menuItems = (
         <React.Fragment>
             <li>
@@ -26,35 +38,65 @@ const Navbar = () => {
                     Home
                 </Link>
             </li>
-            <div>
-                {
-                    user?.uid ? <><li
-                        onClick={handleLogOut}
-                        className=''
-                    >
-                        <span className="lg:btn lg:btn-primary lg:bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary lg:text-white font-semibold lg:rounded-full">
-                            Log Out
-                        </span>
-                    </li></> : <div className='md:flex'>
+            <div className='flex items-center lg:justify-between flex-col lg:flex-row'>
+                <div className="navbar bg-base-100 p-0 w-fit">
+                    <div className="flex-none">
+                        <ul className="menu menu-horizontal p-0">
+                            <li tabIndex={0}>
+                                <Link className='font-medium' >
+                                    Categories
+                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                                </Link>
+                                <ul className="p-2 bg-base-100 z-50">
 
-                        <li tabIndex={0}>
-                            <Link className="font-semibold justify-between" to="/login">
-                                Login
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="font-semibold" to="/signup">
-                                Sign Up
-                            </Link>
-                        </li>
+                                    {
+                                        categories.map(category => <li
+                                            key={category._id}
+                                        >
+                                            <Link
+                                                className='pr-24'
+                                                to={`/category/${category.category_id}`}>{category.name}
+                                            </Link>
+                                        </li>)
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                }
+                </div>
+
+
+                <div>
+                    {
+                        user?.uid ? <><li
+                            onClick={handleLogOut}
+                            className=''
+                        >
+                            <span className="px-6 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold rounded-full">
+                                Log Out
+                            </span>
+                        </li></> : <div className='md:flex'>
+
+                            <li tabIndex={0}>
+                                <Link className="font-semibold justify-between" to="/login">
+                                    Login
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="font-semibold" to="/signup">
+                                    Sign Up
+                                </Link>
+                            </li>
+                        </div>
+                    }
+                </div>
             </div>
 
 
 
+
             <li>
-                <div className='relative inline-block '>
+                <div className='relative flex'>
                     <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         className='relative z-10 text-gray-700 border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40  focus:ring-blue-300 focus:ring  focus:outline-none lg:px-2 flex items-center'
@@ -71,7 +113,7 @@ const Navbar = () => {
                     </button>
 
                     {isDropdownOpen && (
-                        <div className='absolute z-20 w-56 lg:right-0 py-2 mt-2 bg-white rounded-md shadow-xl '>
+                        <div className='absolute z-20 w-56 lg:right-0 py-4 mt-28 bg-white rounded-md shadow-xl lg:mt-32 '>
                             <Link
                                 to='/dashboard'
                                 className='flex items-center px-3 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-gray-100 '

@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import PrimarySpinner from '../../../../components/Spinner/PrimarySpinner';
+import { AuthContext } from '../../../../context/AuthProvider/AuthProvider';
 
 const SingleProductCard = ({ product, setModalData }) => {
     const { location, name, original_price, published_date, picture, rating, resale_price, seller_img, verify, seller_name, years_of_use } = product;
     const [loading, setLoading] = useState(false)
+    const { user } = useContext(AuthContext)
 
     const handleAddToWishList = (product) => {
         setLoading(true)
+        const wishlistData = {
+            product,
+            wishlistAuthor: user?.email
+        }
+
         fetch("http://localhost:5000/wishlist", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
                 authorization: `bearer ${localStorage.getItem("access-token")}`
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(wishlistData)
         })
             .then(res => res.json())
             .then(data => {
