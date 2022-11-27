@@ -12,8 +12,7 @@ const CheckoutForm = ({ booking }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [processing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState("")
-    const { itemPrice, itemName, userName, userEmail, productId, status } = booking
-
+    const { itemPrice, itemName, userName, userEmail, productId, status, _id } = booking
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -75,8 +74,33 @@ const CheckoutForm = ({ booking }) => {
             return;
         }
         if (paymentIntent.status === "succeeded") {
-            setSuccess("Congrats! your payment has been success")
-            setTransactionId(paymentIntent.id)
+            const paymentInfo = {
+                itemName,
+                itemPrice,
+                userName,
+                userEmail,
+                status,
+                productId,
+                bookingId: _id,
+                transactionId: paymentIntent.id
+            }
+
+            // save payment info in the database
+            fetch(`http://localhost:5000/payments`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `bearer ${localStorage.getItem("access-token")}`
+                },
+                body: JSON.stringify(paymentInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        setSuccess("Congrats! your payment has been success")
+                        setTransactionId(paymentIntent.id)
+                    }
+                })
         }
         setProcessing(false)
 
