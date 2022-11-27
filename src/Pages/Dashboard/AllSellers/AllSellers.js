@@ -8,7 +8,7 @@ const AllSellers = () => {
 
         queryKey: ["allSellers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/myUsers?userRole=seller", {
+            const res = await fetch("https://computer-zone-server.vercel.app/myUsers?userRole=seller", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }

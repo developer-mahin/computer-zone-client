@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import TableContent from '../../../components/TableContent/TableContent';
-import "./Allbuyers.css"
+import "./Allbuyers.css";
 
 
 const AllBuyers = () => {
@@ -10,7 +10,7 @@ const AllBuyers = () => {
 
         queryKey: ["allBuyers"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/myUsers?userRole=buyer", {
+            const res = await fetch("https://computer-zone-server.vercel.app/myUsers?userRole=buyer", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }

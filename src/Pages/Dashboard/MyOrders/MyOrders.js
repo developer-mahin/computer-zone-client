@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { data: allBookings = [] } = useQuery({
         queryKey: ["all-bookings", user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            const res = await fetch(`https://computer-zone-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
@@ -38,7 +38,6 @@ const MyOrders = () => {
                         <>
                             {
                                 allBookings.map((booking, i) =>
-                                    // console.log(booking)
                                     <tr
                                         key={booking._id}
                                     >
@@ -77,7 +76,7 @@ const MyOrders = () => {
                                         </td>
 
                                     </tr>
-                                    
+
 
                                 )
                             }

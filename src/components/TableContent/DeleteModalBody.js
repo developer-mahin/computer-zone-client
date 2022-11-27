@@ -7,7 +7,7 @@ const DeleteModalBody = ({ data, id }) => {
 
     //     const handleDelete = (id) => {
     //     console.log(id);
-    //     // fetch(`http://localhost:5000/deleteAPerson/${id}`, {
+    //     // fetch(`https://computer-zone-server.vercel.app/deleteAPerson/${id}`, {
     //     //     method: "DELETE",
     //     //     headers: {
     //     //         authorization: `bearer ${localStorage.getItem("access-token")}`

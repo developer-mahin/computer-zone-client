@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import { FileUploader } from "react-drag-drop-files";
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 
 
@@ -65,7 +65,7 @@ const AddProduct = () => {
                     status: "Available"
                 }
                 // save product in db
-                fetch("http://localhost:5000/addProduct", {
+                fetch("https://computer-zone-server.vercel.app/addProduct", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

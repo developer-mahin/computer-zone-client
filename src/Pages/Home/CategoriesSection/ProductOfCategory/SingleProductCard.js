@@ -15,7 +15,7 @@ const SingleProductCard = ({ product, setModalData }) => {
             wishlistAuthor: user?.email
         }
 
-        fetch("http://localhost:5000/wishlist", {
+        fetch("https://computer-zone-server.vercel.app/wishlist", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

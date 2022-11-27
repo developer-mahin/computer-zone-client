@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
-import DeleteModalBody from './DeleteModalBody';
 
 const TableContent = ({ data, index, refetch }) => {
     const { email, image, name, location, _id } = data
@@ -11,7 +10,7 @@ const TableContent = ({ data, index, refetch }) => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/deleteAPerson/${id}`, {
+        fetch(`https://computer-zone-server.vercel.app/deleteAPerson/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("access-token")}`

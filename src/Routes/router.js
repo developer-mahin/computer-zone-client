@@ -49,7 +49,7 @@ const router = createBrowserRouter([
                 path: "/category/:id",
                 element: <PrivateRoute><ProductOfCategory></ProductOfCategory></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/category/${params.id}`)
+                    return fetch(`https://computer-zone-server.vercel.app/category/${params.id}`)
                 }
             },
         ]
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
                 path: "/dashboard/payment/:id",
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/bookings/${params.id}`)
+                    return fetch(`https://computer-zone-server.vercel.app/bookings/${params.id}`)
                 }
             },
 

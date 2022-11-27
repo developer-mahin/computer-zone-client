@@ -28,7 +28,7 @@ const BookingModal = ({ modalData, setModalData }) => {
             status
         }
 
-        fetch("http://localhost:5000/booking", {
+        fetch("https://computer-zone-server.vercel.app/booking", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import "./Checkout.css"
+import SmallSpinner from '../../../components/Spinner/SmallSpinner';
+import "./Checkout.css";
 
 
 const CheckoutForm = ({ booking }) => {
@@ -16,7 +17,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://computer-zone-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -79,14 +80,13 @@ const CheckoutForm = ({ booking }) => {
                 itemPrice,
                 userName,
                 userEmail,
-                status,
                 productId,
                 bookingId: _id,
                 transactionId: paymentIntent.id
             }
 
             // save payment info in the database
-            fetch(`http://localhost:5000/payments`, {
+            fetch(`https://computer-zone-server.vercel.app/payments`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -141,9 +141,13 @@ const CheckoutForm = ({ booking }) => {
                 }
                 <div>
                     {
-                        success && <>
-                            <p className='text-green-500 font-medium'>{success}</p>
-                            <p className='font-medium text-xl text-gray-300'>Your Transaction Id is: <span className='font-bold'>{transactionId}</span> </p>
+                        processing ? <SmallSpinner></SmallSpinner> : <>
+                            {
+                                success && <>
+                                    <p className='text-green-500 font-medium'>{success}</p>
+                                    <p className='font-medium text-xl text-gray-300'>Your Transaction Id is: <span className='font-bold'>{transactionId}</span> </p>
+                                </>
+                            }
                         </>
                     }
                 </div>

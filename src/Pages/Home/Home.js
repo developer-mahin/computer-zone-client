@@ -16,7 +16,7 @@ const Home = () => {
   const { data: availableData = [] } = useQuery({
     queryKey: ["availableProduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertise?status=Available")
+      const res = await fetch("https://computer-zone-server.vercel.app/advertise?status=Available")
       const data = await res.json()
       return data;
     }

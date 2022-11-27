@@ -3,40 +3,12 @@ import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 
 const MyProductsCard = ({ product, refetch }) => {
-    const { description, name, original_price, picture, published_date, resale_price, years_of_use, _id, status } = product;
+    const { description, name, original_price, picture, published_date, resale_price, years_of_use, status } = product;
     const [loading, setLoading] = useState(false)
-    const [isDisabled, setIsDisabled] = useState(false)
-
-
-    // const handleSold = (id) => {
-    //     const change = {
-    //         status: "Sold"
-    //     }
-    //     console.log(id);
-    //     fetch(`http://localhost:5000/status/${id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "content-type": "application/json",
-    //             authorization: `bearer ${localStorage.getItem("access-token")}`
-    //         },
-    //         body: JSON.stringify(change)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.acknowledged) {
-    //                 toast.success("Status update available to sold")
-    //                 refetch()
-    //             }
-    //         })
-    //         .catch(err => {
-    //             toast.error(err.message)
-    //         })
-    // }
-
 
     const handleAddToAdvertise = () => {
         setLoading(true)
-        fetch("http://localhost:5000/advertise", {
+        fetch("https://computer-zone-server.vercel.app/advertise", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -52,7 +24,7 @@ const MyProductsCard = ({ product, refetch }) => {
                 }
             })
             .catch(err => {
-                toast.error(err.message)
+                toast.error("Already this product have in the advertise")
                 setLoading(false)
             })
     }
@@ -88,7 +60,6 @@ const MyProductsCard = ({ product, refetch }) => {
                     </div>
                     <div className="flex flex-col items-center md:flex-row gap-y-3">
                         <button
-                            // onClick={() => handleSold(_id)}
                             className="btn bg-gradient-to-r from-primary to-secondary border-0 hover:rounded-full font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 focus:shadow-outline focus:outline-none w-full "
                         >
                             {
@@ -98,7 +69,6 @@ const MyProductsCard = ({ product, refetch }) => {
                         <button
                             onClick={() => {
                                 handleAddToAdvertise();
-                                setIsDisabled(!isDisabled)
                             }}
                             disabled={status === "Sold" && true}
                             className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 lg:w-1/2 w-full"

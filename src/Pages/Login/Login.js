@@ -1,12 +1,12 @@
+import Lottie from "lottie-react";
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-import Lottie from "lottie-react";
-import loginJson from "../../Assets/Lottie file/72874-user-profile-v2.json"
-import SmallSpinner from '../../components/Spinner/SmallSpinner';
 import toast from 'react-hot-toast';
 import { FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import loginJson from "../../Assets/Lottie file/72874-user-profile-v2.json";
+import SmallSpinner from '../../components/Spinner/SmallSpinner';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const {
@@ -62,7 +62,7 @@ const Login = () => {
             image,
             userRole
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://computer-zone-server.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -77,15 +77,15 @@ const Login = () => {
 
 
     const getAccessToken = (email) => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.accessToken) {
-              localStorage.setItem("access-token", data.accessToken);
-              navigate(from, { replace: true });
-            }
-          });
-      };
+        fetch(`https://computer-zone-server.vercel.app/jwt?email=${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.accessToken) {
+                    localStorage.setItem("access-token", data.accessToken);
+                    navigate(from, { replace: true });
+                }
+            });
+    };
 
 
     return (

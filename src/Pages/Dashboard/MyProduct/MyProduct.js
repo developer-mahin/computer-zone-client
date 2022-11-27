@@ -10,7 +10,7 @@ const MyProduct = () => {
 
         queryKey: ["getAllProducts", user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/my-product?email=${user?.email}`, {
+            const res = await fetch(`https://computer-zone-server.vercel.app/my-product?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }

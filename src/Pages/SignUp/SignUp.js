@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
+import registerJson from "../../Assets/Lottie file/38435-register.json";
 import SmallSpinner from '../../components/Spinner/SmallSpinner';
-import registerJson from "../../Assets/Lottie file/38435-register.json"
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const SignUp = () => {
@@ -56,7 +56,7 @@ const SignUp = () => {
                                     data.name,
                                     data.email,
                                     imageData.data.display_url,
-                                    userRole, 
+                                    userRole,
                                     location
                                 );
                                 setLoading(false)
@@ -100,10 +100,10 @@ const SignUp = () => {
             name,
             email,
             image,
-            userRole, 
+            userRole,
             location
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://computer-zone-server.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -118,15 +118,15 @@ const SignUp = () => {
 
 
     const getAccessToken = (email) => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.accessToken) {
-              localStorage.setItem("access-token", data.accessToken);
-              navigate("/");
-            }
-          });
-      };
+        fetch(`https://computer-zone-server.vercel.app/jwt?email=${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.accessToken) {
+                    localStorage.setItem("access-token", data.accessToken);
+                    navigate("/");
+                }
+            });
+    };
 
 
     return (
