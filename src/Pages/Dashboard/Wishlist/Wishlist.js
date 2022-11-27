@@ -6,7 +6,7 @@ import SingleWishlist from './SingleWishlist';
 
 const Wishlist = () => {
     const { user } = useContext(AuthContext)
-    // const [wishlists, setWishlists] = useState([])
+    const [wishlists, setWishlists] = useState([])
     const [loading, setLoading] = useState(false)
 
     // axios.get(`https://computer-zone-server.vercel.app/myWishlist?email=${user?.email}`,{
@@ -45,20 +45,20 @@ const Wishlist = () => {
 
 
 
-    const { data: wishlists = [] } = useQuery({
-        queryKey: ["all-bookings", user?.email],
-        queryFn: async () => {
-            setLoading(true)
-            const res = await fetch(`https://computer-zone-server.vercel.app/myWishlist?email=${user?.email}`, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem("access-token")}`
-                }
-            })
-            const data = await res.json()
-            setLoading(false)
-            return data;
-        }
-    })
+    // const { data: wishlists = [] } = useQuery({
+    //     queryKey: ["all-bookings", user?.email],
+    //     queryFn: async () => {
+    //         setLoading(true)
+    //         const res = await fetch(`https://computer-zone-server.vercel.app/myWishlist?email=${user?.email}`, {
+    //             headers: {
+    //                 authorization: `bearer ${localStorage.getItem("access-token")}`
+    //             }
+    //         })
+    //         const data = await res.json()
+    //         setLoading(false)
+    //         return data;
+    //     }
+    // })
 
 
     return (

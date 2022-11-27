@@ -1,18 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
-import TableContent from '../../../components/TableContent/TableContent';
-import "./Allbuyers.css";
+import SingleReportItem from './SingleReportItem';
 
-
-const AllBuyers = () => {
+const ReportedItems = () => {
     const [loading, setLoading] = useState(false)
-    const { data: allBuyers = [], refetch } = useQuery({
 
-        queryKey: ["allBuyers"],
+    const { data: allReportedItems = [], refetch } = useQuery({
+        queryKey: ["allReportedItems"],
         queryFn: async () => {
             setLoading(true)
-            const res = await fetch("https://computer-zone-server.vercel.app/myUsers?userRole=buyer", {
+            const res = await fetch("http://localhost:5000/reported-items", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
@@ -21,58 +19,62 @@ const AllBuyers = () => {
             setLoading(false)
             return data;
         }
-
     })
 
+    console.log(allReportedItems);
 
     return (
         <>
+
             {
                 loading ? <BigSpinner></BigSpinner> : <>
 
                     {
-                        allBuyers.length > 0 ? <>
+                        allReportedItems.length ? <>
+
                             <div className="overflow-x-auto w-full">
                                 <table className="table w-full">
-                                    <thead>
-                                        <tr className='text-gray-300'>
+                                    <thead className='border-b-2 border-gray-300'>
+                                        <tr>
                                             <th>
                                                 <label>
                                                     No.
                                                 </label>
                                             </th>
-                                            <th>Name</th>
-                                            <th>Email</th>
+                                            <th>Product Image</th>
+                                            <th>Product Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         {
-                                            (allBuyers.length) && allBuyers?.map((buyer, index) => <TableContent
-                                                key={buyer._id}
-                                                data={buyer}
+                                            allReportedItems.map((item, index) => <SingleReportItem
+
                                                 index={index}
+                                                key={item._id}
+                                                item={item}
                                                 refetch={refetch}
-                                            ></TableContent>)
+                                            ></SingleReportItem>)
                                         }
 
+
                                     </tbody>
-
-
                                 </table>
                             </div>
                         </>
                             :
-                            <>
-                                <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize text-white'>There is no Buyers </h2>
-                            </>
 
+                            <>
+                                <h2 className='flex justify-center items-center text-2xl text-gray-300'>There are no reported items here</h2>
+                            </>
                     }
 
                 </>
             }
+
         </>
     );
 };
 
-export default AllBuyers;
+export default ReportedItems;

@@ -14,7 +14,7 @@ const BrandPartner = () => {
     return (
         <div>
             <div style={partner}>
-                <div className='container mx-auto py-9'>
+                <div className='container mx-auto py-9 px-3'>
                     <div className="">
                         <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
                             BRAND
@@ -27,7 +27,7 @@ const BrandPartner = () => {
             </div>
             <div className='container mx-auto lg:py-14 py-5 px-4'>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-28 gap-y-8'>
+                <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-28 gap-x-3 gap-y-8'>
 
                     <div className=''>
                         <img className='w-full h-12 ' src="https://assets-global.website-files.com/5e4319072e6fb910d3a508a6/629f7c2cc54f1e3d86548ffa_MSFT%20Logo.png" alt="" />

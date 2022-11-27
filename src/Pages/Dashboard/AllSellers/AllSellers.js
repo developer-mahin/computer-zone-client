@@ -1,19 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
+import BigSpinner from '../../../components/Spinner/BigSpinner';
 import TableContent from '../../../components/TableContent/TableContent';
 
 const AllSellers = () => {
+
+    const [loading, setLoading] = useState(false)
 
     const { data: allSellers = [], refetch } = useQuery({
 
         queryKey: ["allSellers"],
         queryFn: async () => {
+            setLoading(true)
             const res = await fetch("https://computer-zone-server.vercel.app/myUsers?userRole=seller", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
             })
             const data = await res.json()
+            setLoading(false)
             return data;
         }
 
@@ -24,46 +29,52 @@ const AllSellers = () => {
     return (
         <>
             {
-                allSellers.length > 0 ? <>
+                loading ? <BigSpinner></BigSpinner> : <>
 
-                    <div className="overflow-x-auto w-full">
-                        <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <label>
-                                            No.
-                                        </label>
-                                    </th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    allSellers.length && allSellers?.map((seller, index) => <TableContent
-                                        key={seller._id}
-                                        data={seller}
-                                        index={index}
-                                        refetch={refetch}
-                                    ></TableContent>)
-                                }
+                    {
+                        allSellers.length > 0 ? <>
 
-                            </tbody>
+                            <div className="overflow-x-auto w-full">
+                                <table className="table w-full">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <label>
+                                                    No.
+                                                </label>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            allSellers.length && allSellers?.map((seller, index) => <TableContent
+                                                key={seller._id}
+                                                data={seller}
+                                                index={index}
+                                                refetch={refetch}
+                                            ></TableContent>)
+                                        }
+
+                                    </tbody>
 
 
-                        </table>
+                                </table>
 
-                    </div>
+                            </div>
+
+                        </>
+
+                            :
+
+                            <>
+                                <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize text-white'>There is no Sellers </h2>
+                            </>
+                    }
 
                 </>
-
-                    :
-
-                    <>
-                        <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize text-white'>There is no Sellers </h2>
-                    </>
             }
         </>
     );

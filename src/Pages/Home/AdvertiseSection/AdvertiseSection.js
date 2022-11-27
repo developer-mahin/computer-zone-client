@@ -4,14 +4,14 @@ import AdvertiseCard from './AdvertiseCard';
 const AdvertiseSection = ({ availableData }) => {
 
     return (
-        <div className='container mx-auto lg:py-14 py-7'>
+        <div className='container mx-auto lg:py-14 py-7 px-3'>
             <div className=" text-center pb-6">
                 <div className="">
                     <p className="inline-block px-3 py-px mb-4  font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
                         advertise
                     </p>
-                    <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
-                        Our special offer is running, buy the product immediately
+                    <h2 className="mb-6 font-sans lg:text-3xl text-xl font-bold tracking-tight sm:text-4xl sm:leading-none capitalize">
+                        Our special offer is running, buy your product immediately
                     </h2>
                 </div>
             </div>

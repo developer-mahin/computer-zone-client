@@ -27,7 +27,7 @@ const SliderItem = ({ slide }) => {
                     </div>
                 </div>
             </div>
-            <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0 gap-5 ">
+            <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0 gap-5 px-3">
                 <a
                     href={`#slide${prev}`}
                     className="btn btn-circle bg-[#bdbcbc67] hover:bg-primary text-white border-none"

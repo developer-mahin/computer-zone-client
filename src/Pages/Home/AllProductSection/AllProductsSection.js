@@ -14,7 +14,7 @@ const AllProductsSection = () => {
     })
 
     return (
-        <div className='container mx-auto lg:py-14 py-8'>
+        <div className='container mx-auto lg:py-14 py-8 px-3'>
             <div className=" text-center">
                 <div className="">
                     <p className="inline-block px-3 py-px mb-4  font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">

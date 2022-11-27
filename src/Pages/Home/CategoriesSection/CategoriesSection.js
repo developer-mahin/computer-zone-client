@@ -16,7 +16,7 @@ const CategoriesSection = () => {
 
 
     return (
-        <div className='lg:py-14 py-6 container mx-auto'>
+        <div className='lg:py-14 py-10 container mx-auto'>
             <div className=" text-center">
                 <div className="">
                     <p className="inline-block px-3 py-px mb-4  font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
@@ -27,7 +27,7 @@ const CategoriesSection = () => {
                     </h2>
                 </div>
             </div>
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mt-9'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mt-9 px-3'>
                 {
                     categories.map(category => <CategoryCard
 
