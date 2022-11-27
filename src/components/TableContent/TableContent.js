@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import DeleteModalBody from './DeleteModalBody';
 
 const TableContent = ({ data, index, refetch }) => {
     const { email, image, name, location, _id } = data
+    // console.log(data)
+    // const [id, setId] = useState("")
+
+    // console.log(id);
 
     const handleDelete = (id) => {
+        console.log(id);
         fetch(`http://localhost:5000/deleteAPerson/${id}`, {
             method: "DELETE",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -16,6 +25,7 @@ const TableContent = ({ data, index, refetch }) => {
                 }
             })
     }
+
 
     return (
         <>
@@ -42,9 +52,22 @@ const TableContent = ({ data, index, refetch }) => {
                     <span>{email}</span>
                 </td>
                 <td>
-                    <button onClick={() => handleDelete(_id)} className='btn bg-red-600 border-none text-white btn-xs'>Delete</button>
+                    <label
+                        // onClick={() => setId(_id)}
+                        onClick={() => handleDelete(_id)}
+                        // htmlFor="delete-modal"
+                        className='btn bg-red-600 border-none text-white btn-xs'
+                    >
+                        Delete
+                    </label>
                 </td>
             </tr>
+            {/* <DeleteModalBody */}
+            {/* data={data} */}
+            {/* // id={id} */}
+            {/* // handleDelete={handleDelete} */}
+            {/* // ></DeleteModalBody> */}
+
         </>
     );
 };

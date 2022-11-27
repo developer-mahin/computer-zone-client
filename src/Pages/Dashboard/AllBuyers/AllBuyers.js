@@ -58,7 +58,7 @@ const AllBuyers = () => {
                 </>
                     :
                     <>
-                        <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize'>There is no Buyers </h2>
+                        <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize text-white'>There is no Buyers </h2>
                     </>
 
             }

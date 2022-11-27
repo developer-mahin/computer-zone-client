@@ -18,7 +18,7 @@ const Payment = () => {
                     <img src={booking?.itemImage} className="w-full rounded-xl" alt="" />
                 </div>
                 <div>
-                    <h2 className='lg:text-2xl text-xl font-semibold text-gray-300'>Payment {booking?.itemPrice} for {booking?.itemName}</h2>
+                    <h2 className='lg:text-2xl text-xl font-semibold text-gray-300'>Payment {booking?.itemPrice}৳ for {booking?.itemName}</h2>
                     <div className='mt-6'>
                         <Elements
                             stripe={stripePromise}

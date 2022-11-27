@@ -4,7 +4,7 @@ import TableContent from '../../../components/TableContent/TableContent';
 
 const AllSellers = () => {
 
-    const { data: allSellers = [] } = useQuery({
+    const { data: allSellers = [], refetch } = useQuery({
 
         queryKey: ["allSellers"],
         queryFn: async () => {
@@ -43,10 +43,10 @@ const AllSellers = () => {
                             <tbody>
                                 {
                                     allSellers.length && allSellers?.map((seller, index) => <TableContent
-
                                         key={seller._id}
                                         data={seller}
                                         index={index}
+                                        refetch={refetch}
                                     ></TableContent>)
                                 }
 
@@ -54,6 +54,7 @@ const AllSellers = () => {
 
 
                         </table>
+
                     </div>
 
                 </>
@@ -61,7 +62,7 @@ const AllSellers = () => {
                     :
 
                     <>
-                        <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize'>There is no Sellers </h2>
+                        <h2 className='text-center h-screen flex items-center justify-center text-4xl font-bold capitalize text-white'>There is no Sellers </h2>
                     </>
             }
         </>
