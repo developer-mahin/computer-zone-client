@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';

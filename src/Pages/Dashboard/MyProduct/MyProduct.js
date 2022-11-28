@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import MyProductsCard from './MyProductsCard';
 
 const MyProduct = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const { data: allProducts = [], refetch } = useQuery({
 
@@ -16,6 +17,13 @@ const MyProduct = () => {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
             })
+            if (res.status === 401 || res.status === 403) {
+                return logOut()
+                    .then(() => { })
+                    .then((err) => {
+                        toast.message(err.message)
+                    })
+            }
             const data = await res.json()
             return data;
         }

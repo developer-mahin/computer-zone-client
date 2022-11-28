@@ -101,7 +101,7 @@ const SignUp = () => {
             email,
             image,
             userRole,
-            location, 
+            location,
             verify: false
         };
         fetch("https://computer-zone-server.vercel.app/users", {

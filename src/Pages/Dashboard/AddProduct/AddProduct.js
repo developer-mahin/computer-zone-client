@@ -14,7 +14,7 @@ const AddProduct = () => {
         setFile(file);
 
     };
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState("")
     const sliceDate = date.toString().slice(0, 24)
@@ -73,7 +73,17 @@ const AddProduct = () => {
                     },
                     body: JSON.stringify(productData)
                 })
-                    .then(res => res.json())
+                    .then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            return logOut()
+                                .then(() => { })
+                                .then((err) => {
+                                    toast.message(err.message)
+                                })
+                        }
+                        return res.json()
+
+                    })
                     .then(data => {
                         if (data.acknowledged) {
                             toast.success("Product successfully added")

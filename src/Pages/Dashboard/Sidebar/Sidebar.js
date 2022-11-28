@@ -13,7 +13,11 @@ const Sidebar = () => {
 
     useEffect(() => {
         setUserRoleLoading(true)
-        fetch(`https://computer-zone-server.vercel.app/user/${user?.email}`)
+        fetch(`https://computer-zone-server.vercel.app/user/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setUserRole(data.userRole)

@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import BigSpinner from "../../../components/Spinner/BigSpinner";
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import BigSpinner from "../../../components/Spinner/BigSpinner"
 
 const MyOrders = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
 
     const { data: allBookings = [] } = useQuery({
@@ -17,6 +18,13 @@ const MyOrders = () => {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
             })
+            if (res.status === 401 || res.status === 403) {
+                return logOut()
+                    .then(() => { })
+                    .then((err) => {
+                        toast.message(err.message)
+                    })
+            }
             const data = await res.json()
             setLoading(false)
             return data;

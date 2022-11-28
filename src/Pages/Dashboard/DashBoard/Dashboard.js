@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import PrimarySpinner from '../../../components/Spinner/PrimarySpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
@@ -6,17 +7,30 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Dashboard = () => {
     const [userRole, setUserRole] = useState("")
     const [userRoleLoading, setUserRoleLoading] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     useEffect(() => {
         setUserRoleLoading(true)
-        fetch(`https://computer-zone-server.vercel.app/user/${user?.email}`)
-            .then(res => res.json())
+        fetch(`https://computer-zone-server.vercel.app/user/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                        .then(() => { })
+                        .catch((err) => {
+                            toast.error(err.message)
+                        })
+                }
+                return res.json()
+            })
             .then(data => {
                 setUserRole(data.userRole)
                 setUserRoleLoading(false)
             })
-    }, [user?.email])
+    }, [user?.email, logOut])
 
 
     return (

@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import TableContent from '../../../components/TableContent/TableContent';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import "./Allbuyers.css";
 
 
 const AllBuyers = () => {
     const [loading, setLoading] = useState(false)
+    const { logOut } = useContext(AuthContext)
     const { data: allBuyers = [], refetch } = useQuery({
 
         queryKey: ["allBuyers"],
@@ -17,6 +20,13 @@ const AllBuyers = () => {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }
             })
+            if (res.status === 401 || res.status === 403) {
+                return logOut()
+                    .then(() => { })
+                    .then((err) => {
+                        toast.message(err.message)
+                    })
+            }
             const data = await res.json()
             setLoading(false)
             return data;
