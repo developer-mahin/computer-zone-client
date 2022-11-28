@@ -1,7 +1,7 @@
 import React from 'react';
 import AdvertiseCard from './AdvertiseCard';
 
-const AdvertiseSection = ({ availableData }) => {
+const AdvertiseSection = ({ advertiseProducts }) => {
 
     return (
         <div className='container mx-auto lg:py-14 py-7 px-3'>
@@ -18,7 +18,7 @@ const AdvertiseSection = ({ availableData }) => {
 
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
                 {
-                    availableData.map(data => <AdvertiseCard
+                    advertiseProducts.map(data => <AdvertiseCard
 
                         key={data._id}
                         data={data}

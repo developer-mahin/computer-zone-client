@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AdvertiseCard = ({ data }) => {
-    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email } = data;
+    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email,verify } = data;
 
 
     return (
@@ -16,13 +16,23 @@ const AdvertiseCard = ({ data }) => {
                         <p className='font-medium'>🔹 Resale Price: {resale_price}</p>
                         <p className='font-medium'>🔹 Original Price: {original_price}</p>
                     </div>
-                    <div className='flex items-center gap-4 lg:mt-0 mt-4'>
-                        <img src={seller_img} className="w-16 h-16 rounded-full border-4 border-green-700 object-cover" alt="" />
-                        <div>
-                            <p className='font-medium lg:text-base text-sm'>Email: {seller_email}</p>
-                            <p className='font-medium lg:text-base text-sm'>Name: {seller_name}</p>
-                        </div>
-                    </div>
+                    <div className='flex items-center gap-3 lg:mt-0 mt-4'>
+                                    <div className='relative'>
+                                        <img src={seller_img} className="w-14 h-14 rounded-full border-4 border-green-500 object-cover" alt="" />
+                                        <div className='absolute top-0 right-0'>
+                                            {
+                                                verify && <>
+                                                    <img className='w-5 h-5 rounded-full' src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Facebook_verified_account_checkmark.jpg" alt="" />
+                                                </>
+
+                                            }
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className='font-medium lg:text-base text-sm'>Email: {seller_email ? seller_email : "Not Available"}</p>
+                                        <p className='font-medium lg:text-base text-sm'>Name: {seller_name ? seller_name : "Not Available"}</p>
+                                    </div>
+                                </div>
                 </div>
 
                 <div className="card-actions justify-end">

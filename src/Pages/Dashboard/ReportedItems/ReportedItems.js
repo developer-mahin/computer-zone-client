@@ -21,7 +21,6 @@ const ReportedItems = () => {
         }
     })
 
-    console.log(allReportedItems);
 
     return (
         <>

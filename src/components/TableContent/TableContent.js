@@ -4,10 +4,7 @@ import toast from 'react-hot-toast';
 const TableContent = ({ data, index, refetch }) => {
     const { email, image, name, location, _id, verify, verifyStatus } = data
     const [loading, setLoading] = useState(false)
-    // console.log(data)
-    // const [id, setId] = useState("")
 
-    // console.log(email);
 
     const handleDelete = (id) => {
         fetch(`https://computer-zone-server.vercel.app/deleteAPerson/${id}`, {
@@ -27,8 +24,6 @@ const TableContent = ({ data, index, refetch }) => {
 
     const handleVerifyUser = (email) => {
         setLoading(true)
-        console.log(email);
-
         fetch(`http://localhost:5000/verify-users/${email}`, {
             method: "PATCH",
             headers: {

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import BigSpinner from '../../components/Spinner/BigSpinner';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import AdvertiseSection from './AdvertiseSection/AdvertiseSection';
 import AllProductsSection from './AllProductSection/AllProductsSection';
@@ -11,13 +12,15 @@ import HomeSlider from './HomeSlider/HomeSlider';
 const Home = () => {
 
   const { user } = useContext(AuthContext)
+  const [loading, setLoading] = useState(false)
 
-
-  const { data: availableData = [] } = useQuery({
+  const { data: advertiseProducts = [] } = useQuery({
     queryKey: ["availableProduct"],
     queryFn: async () => {
+      setLoading(true)
       const res = await fetch("https://computer-zone-server.vercel.app/advertise?status=Available")
       const data = await res.json()
+      setLoading(false)
       return data;
     }
   })
@@ -29,9 +32,15 @@ const Home = () => {
       <BrandPartner></BrandPartner>
       <CategoriesSection></CategoriesSection>
       {
-        availableData.length && <AdvertiseSection
-          availableData={availableData}
-        ></AdvertiseSection>
+        loading ? <BigSpinner></BigSpinner> : <>
+
+          {
+            advertiseProducts.length && <AdvertiseSection
+              advertiseProducts={advertiseProducts}
+            ></AdvertiseSection>
+          }
+
+        </>
       }
       {
         user?.uid && <AllProductsSection></AllProductsSection>

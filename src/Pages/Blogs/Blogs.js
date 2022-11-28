@@ -15,19 +15,16 @@ const Blogs = () => {
     }
 
     return (
-        <div className=''>
+        <div className='py-10'>
             <div className=" text-center">
                 <div className="mt-3">
                     <p className="inline-block px-3 py-px mb-4  font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
                         Blogs
                     </p>
-                    {/* <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
-                        Explore By Category
-                    </h2> */}
                 </div>
-            </div>
-            <section className=" ">
-                <div className="container p-6 lg:px-0 px-3 mx-auto space-y-6 sm:space-y-12">
+            </div> 
+            <section className="container mx-auto pb-20 py-10 px-3">
+                <div className=" grid lg:grid-cols-2 grid-cols-1 gap-6">
 
                     {blogs.map(blog => <SingleBLog
 
