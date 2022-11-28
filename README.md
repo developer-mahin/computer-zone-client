@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+#  Welcome to my multi-vendor e-commerce website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Website Details:
 
-## Available Scripts
+- Website Name: computer-zone
+- Live site url: https://computer-zone-2fcc0.web.app/
 
-In the project directory, you can run:
+## Which technology is used?
 
-### `npm start`
+### For Functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- JavaScript
+- React
+- React Router Dom
+- React Context API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## For Authentication system
 
-### `npm test`
+- Google Firebase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## For The Back-end
 
-### `npm run build`
+- Node.js
+- Express.js
+- ## Database
+- MongoDB
+- ## Payment method
+- Stripe
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### For styles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Tailwind CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Components library
 
-### `npm run eject`
+- daisy-ui https://daisyui.com/
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## What Kind Of Feature Are Available
+- ### It is a full-stack MERN, multi-vendor e-commerce website
+- ## First, let's describe the 3 types of features
+### 1. User/buyer dashboard
+### 2. Seller dashboard
+### 3. Admin dashboard
+## 1. User/Buyer Dashboard
+- ### On the home page, the user can first see the category of our products.
+- ### By entering these categories, they can see the specific products for each category User/Buyer can booked products from there.
+- ### If the user is not logged in, then he will not be able to see anything in the product category, he will be redirected to the login page
+- ### If the quality of the product is not good, the user/buyer can report the product. 
+- ### After booking, you can go to the dashboard and make a payment. Stripe is used as the payment system 
+## 2. Seller Dashboard
+- ## There are 2 routes in the seller dashboard.
+- ### 1. Add Product
+- ### 2. My Product
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- ## 1. Add Products: 
+- ### By going to Add Product, the seller can upload his products
+- ## 2. My Product 
+- ### By going to the My products route, the seller can see all the products added to him
+- ### The seller can advertise his products in the My Products route. And the advertisements will show the home page. If the product is sold again, it will show Sold status from the available status next to the product on the My Products page. And add to advertise button will be disabled
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 3. Admin Dashboard
+- ## There are 3 routes for admin
 
-## Learn More
+- ### 1. All Seller 
+- ### 2. All Buyer
+- ### 3. Reported Items
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- ## 1. All Seller
+- ### Admin can see all the sellers on the all-seller page. And if you want, you can delete the seller. If you delete the seller, products added by the seller will be deleted from the website. Admin can also verify any seller. After verifying the seller, the product page will show a blue tick mark as verified next to the seller's photo in the seller details.
+- ## 2. All Buyer
+- ### Admin can see all the buyers on the all-buyers page. And if you want, you can delete the buyers.
+- ## 2. Reported items
+- ### Buyer/User reported products can be seen on this route. And the admin can delete the reported products from this place if he wants. And as soon as the reported products are deleted, the products will be deleted from the entire website.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
