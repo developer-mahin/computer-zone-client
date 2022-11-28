@@ -45,9 +45,9 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs></Blogs>,
-                loader: () => {
-                    return fetch("https://computer-zone-server.vercel.app/blogs")
-                }
+                // loader: () => {
+                //     return fetch("https://computer-zone-server.vercel.app/blogs")
+                // }
             },
             {
                 path: "/blogDetails/:id",
