@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
 import toast from 'react-hot-toast';
+import BigSpinner from '../../../components/Spinner/BigSpinner';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
@@ -18,8 +19,38 @@ const AddProduct = () => {
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState("")
     const sliceDate = date.toString().slice(0, 24)
+    const [userRoleLoading, setUserRoleLoading] = useState(false)
+    const [userData, setUserData] = useState({})
+
+    useEffect(() => {
+        setUserRoleLoading(true)
+        fetch(`https://computer-zone-server.vercel.app/user/${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                        .then(() => { })
+                        .catch((err) => {
+                            toast.error(err.message)
+                        })
+                }
+                return res.json()
+            })
+            .then(data => {
+                setUserData(data)
+                setUserRoleLoading(false)
+            })
+    }, [user?.email, logOut])
 
 
+    if(userRoleLoading){
+        return <BigSpinner></BigSpinner>
+    }
+
+    const {verify} = userData;
 
     const handleAddProduct = (event) => {
         setLoading(true)
@@ -51,7 +82,7 @@ const AddProduct = () => {
                     seller_name: user?.displayName,
                     seller_img: user?.photoURL,
                     seller_email: user?.email,
-                    verify: false,
+                    verify,
                     location: location,
                     resale_price: resale_price,
                     original_price: original_price,
