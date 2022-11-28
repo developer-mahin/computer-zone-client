@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import MyProductsCard from './MyProductsCard';
 
@@ -21,29 +22,43 @@ const MyProduct = () => {
     })
 
     return (
-        <div className="p-6 bg-[#1e2b47]">
-            <div className='container mx-auto py-9'>
-                <div className="">
-                    <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
-                        My products
-                    </p>
-                    <h2 className="text-3xl capitalize font-bold text-gray-300">
-                        See Your products
-                    </h2>
-                </div>
-            </div>
+        <>
 
             {
-                allProducts.map(product => <MyProductsCard
+                allProducts.length > 0 ? <>
 
-                    refetch={refetch}
-                    key={product._id}
-                    product={product}
+                    <div className="p-6 bg-[#1e2b47]">
+                        <div className='container mx-auto py-9'>
+                            <div className="">
+                                <p className="inline-block px-3 py-px font-semibold tracking-wider text-accent uppercase rounded-full bg-gradient-to-r from-secondary to-primary">
+                                    My products
+                                </p>
+                                <h2 className="text-3xl capitalize font-bold text-gray-300">
+                                    See Your products
+                                </h2>
+                            </div>
+                        </div>
 
-                ></MyProductsCard>)
+                        {
+                            allProducts.map(product => <MyProductsCard
+
+                                refetch={refetch}
+                                key={product._id}
+                                product={product}
+
+                            ></MyProductsCard>)
+                        }
+
+                    </div>
+
+                </> :
+
+                    <>
+                        <h2 className='flex justify-center items-center h-screen text-2xl text-gray-300'>You do not added any product. first <Link className='text-blue-300 ml-2 hover:underline' to="/dashboard/add-product"> add product</Link></h2>
+                    </>
             }
 
-        </div>
+        </>
     );
 };
 

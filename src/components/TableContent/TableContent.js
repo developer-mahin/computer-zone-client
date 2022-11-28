@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const TableContent = ({ data, index, refetch }) => {
-    const { email, image, name, location, _id } = data
+    const { email, image, name, location, _id, verify, verifyStatus } = data
+    const [loading, setLoading] = useState(false)
     // console.log(data)
     // const [id, setId] = useState("")
 
-    // console.log(id);
+    // console.log(email);
 
     const handleDelete = (id) => {
-        console.log(id);
         fetch(`https://computer-zone-server.vercel.app/deleteAPerson/${id}`, {
             method: "DELETE",
             headers: {
@@ -20,6 +20,26 @@ const TableContent = ({ data, index, refetch }) => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     toast.success("Successfully deleted this user")
+                    refetch()
+                }
+            })
+    }
+
+    const handleVerifyUser = (email) => {
+        setLoading(true)
+        console.log(email);
+
+        fetch(`http://localhost:5000/verify-users/${email}`, {
+            method: "PATCH",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("access-token")}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("user verify succeed")
+                    setLoading(false)
                     refetch()
                 }
             })
@@ -52,10 +72,22 @@ const TableContent = ({ data, index, refetch }) => {
                 </td>
                 <td>
                     <label
+                        onClick={() => handleVerifyUser(email)}
+                        disabled={verifyStatus === "Verified" || verify}
+                        className='bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary rounded-lg text-black px-6 py-2 font-semibold hover:rounded-full btn-sm cursor-pointer'
+                    >
+                        {
+                            loading ? <> <span>Loading...</span>
+                            </> : `${verifyStatus ? verifyStatus : "Verify"}`
+                        }
+                    </label>
+                </td>
+                <td>
+                    <label
                         // onClick={() => setId(_id)}
                         onClick={() => handleDelete(_id)}
                         // htmlFor="delete-modal"
-                        className='btn bg-red-600 border-none text-white btn-xs'
+                        className='btn bg-red-600 border-none text-white btn-sm'
                     >
                         Delete
                     </label>

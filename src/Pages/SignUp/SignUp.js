@@ -95,13 +95,14 @@ const SignUp = () => {
     };
 
 
-    const saveUserInDB = (name, email, image, userRole, location) => {
+    const saveUserInDB = (name, email, image, userRole, location, verify) => {
         const userInfo = {
             name,
             email,
             image,
             userRole,
-            location
+            location, 
+            verify: false
         };
         fetch("https://computer-zone-server.vercel.app/users", {
             method: "POST",

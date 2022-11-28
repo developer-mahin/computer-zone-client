@@ -67,10 +67,10 @@ const router = createBrowserRouter([
                 path: "/dashboard/my-orders",
                 element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
-            {
-                path: "/dashboard/wishlist",
-                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
-            },
+            // {
+            //     path: "/dashboard/wishlist",
+            //     element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+            // },
             {
                 path: "/dashboard/add-product",
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>

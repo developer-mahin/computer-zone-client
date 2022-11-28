@@ -43,6 +43,7 @@ const AllBuyers = () => {
                                             </th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Verify</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
