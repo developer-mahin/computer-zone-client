@@ -11,21 +11,21 @@ const SingleProductCard = ({ product, setModalData }) => {
     const handleAddToReport = () => {
         setLoading(true)
         const reportData = {
-            name, 
-            original_price, 
-            published_date, 
-            picture, 
-            location, 
-            rating, 
-            resale_price, 
-            seller_img, 
-            seller_name, 
-            seller_email, 
-            description, 
+            name,
+            original_price,
+            published_date,
+            picture,
+            location,
+            rating,
+            resale_price,
+            seller_img,
+            seller_name,
+            seller_email,
+            description,
             productId: _id
         }
 
-        fetch("http://localhost:5000/report-item", {
+        fetch("https://computer-zone-server.vercel.app/report-item", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

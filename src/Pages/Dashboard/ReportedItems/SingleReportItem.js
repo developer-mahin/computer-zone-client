@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
-const SingleReportItem = ({ item, index,refetch }) => {
+const SingleReportItem = ({ item, index, refetch }) => {
     const { picture, name, productId, resale_price, } = item;
     const [loading, setLoading] = useState(false)
 
     const handleDeleteItem = (id) => {
         setLoading(true)
-        fetch(`http://localhost:5000/reportsItem/${id}`, {
+        fetch(`https://computer-zone-server.vercel.app/reportsItem/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("access-token")}`

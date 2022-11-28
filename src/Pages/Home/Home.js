@@ -18,7 +18,11 @@ const Home = () => {
     queryKey: ["availableProduct"],
     queryFn: async () => {
       setLoading(true)
-      const res = await fetch("https://computer-zone-server.vercel.app/advertise?status=Available")
+      const res = await fetch("https://computer-zone-server.vercel.app/advertise?status=Available", {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("access-token")}`
+        }
+      })
       const data = await res.json()
       setLoading(false)
       return data;

@@ -24,7 +24,7 @@ const TableContent = ({ data, index, refetch }) => {
 
     const handleVerifyUser = (email) => {
         setLoading(true)
-        fetch(`http://localhost:5000/verify-users/${email}`, {
+        fetch(`https://computer-zone-server.vercel.app/verify-users/${email}`, {
             method: "PATCH",
             headers: {
                 authorization: `bearer ${localStorage.getItem("access-token")}`
@@ -73,7 +73,7 @@ const TableContent = ({ data, index, refetch }) => {
                     >
                         {
                             loading ? <> <span>Loading...</span>
-                            </> : `${verifyStatus ? verifyStatus : "Verify"}`
+                            </> : `${verifyStatus ? verifyStatus : "unverified"}`
                         }
                     </label>
                 </td>

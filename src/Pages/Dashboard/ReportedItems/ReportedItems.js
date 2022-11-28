@@ -10,7 +10,7 @@ const ReportedItems = () => {
         queryKey: ["allReportedItems"],
         queryFn: async () => {
             setLoading(true)
-            const res = await fetch("http://localhost:5000/reported-items", {
+            const res = await fetch("https://computer-zone-server.vercel.app/reported-items", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem("access-token")}`
                 }

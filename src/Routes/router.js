@@ -11,7 +11,6 @@ import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../Pages/Dashboard/ReportedItems/ReportedItems";
-import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ProductOfCategory from "../Pages/Home/CategoriesSection/ProductOfCategory/ProductOfCategory";
 import Home from "../Pages/Home/Home";
@@ -47,14 +46,14 @@ const router = createBrowserRouter([
                 path: "/blogs",
                 element: <Blogs></Blogs>,
                 loader: () => {
-                    return fetch("http://localhost:5000/blogs")
+                    return fetch("https://computer-zone-server.vercel.app/blogs")
                 }
             },
             {
                 path: "/blogDetails/:id",
                 element: <BlogDetails></BlogDetails>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/blogDetails/${params.id}`)
+                    return fetch(`https://computer-zone-server.vercel.app/blogDetails/${params.id}`)
                 }
             },
             {
