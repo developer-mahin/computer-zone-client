@@ -10,8 +10,6 @@ import ContactSection from './ContactSection/ContactSection';
 import HomeSlider from './HomeSlider/HomeSlider';
 
 const Home = () => {
-
-  const { user } = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
 
   const { data: advertiseProducts = [] } = useQuery({
@@ -46,9 +44,8 @@ const Home = () => {
 
         </>
       }
-      {
-        user?.uid && <AllProductsSection></AllProductsSection>
-      }
+
+      <AllProductsSection></AllProductsSection>
       <ContactSection></ContactSection>
     </div>
   );
