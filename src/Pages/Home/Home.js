@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import BigSpinner from '../../components/Spinner/BigSpinner';
-import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import AdvertiseSection from './AdvertiseSection/AdvertiseSection';
 import AllProductsSection from './AllProductSection/AllProductsSection';
 import BrandPartner from './BrandPartner/BrandPartner';

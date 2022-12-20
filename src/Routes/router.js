@@ -12,6 +12,7 @@ import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../Pages/Dashboard/ReportedItems/ReportedItems";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AdvertiseDetails from "../Pages/Home/AdvertiseSection/AdvertiseDetails";
 import ProductOfCategory from "../Pages/Home/CategoriesSection/ProductOfCategory/ProductOfCategory";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -41,6 +42,13 @@ const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "/advertiseDetails/:id",
+                element: <PrivateRoute><AdvertiseDetails></AdvertiseDetails></PrivateRoute>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/advertiseDetails/${params.id}`)
+                }
             },
             {
                 path: "/blogs",
