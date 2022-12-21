@@ -53,7 +53,7 @@ const SingleProductCard = ({ product, setModalData }) => {
         <li className="flex flex-col sm:flex-row sm:justify-between rounded-xl shadow-2xl border-none py-7 bg-gray-100">
             <div className="grid lg:grid-cols-3 gap-5 items-center">
                 <div>
-                    <img className="w-full lg:h-[378px] h-full rounded-xl outline-none" src={picture} alt="Polaroid camera" />
+                    <img  className="w-full lg:h-[378px] h-full rounded-xl outline-none" src={picture} alt="Polaroid camera" />
                 </div>
                 <div className="flex lg:col-span-2 flex-col justify-between w-full pb-4 px-3">
                     <div className="flex justify-between w-full pb-2 space-x-2">
