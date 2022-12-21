@@ -77,13 +77,13 @@ const Navbar = () => {
                             className=''
                         >
                             <span className="px-6 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold rounded-full">
-                                Log Out
+                                Sign Out
                             </span>
                         </li></> : <div className='md:flex'>
 
                             <li tabIndex={0}>
                                 <Link className="font-semibold justify-between" to="/login">
-                                    Login
+                                    Sign In
                                 </Link>
                             </li>
                             <li>

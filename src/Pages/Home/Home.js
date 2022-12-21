@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import BigSpinner from '../../components/Spinner/BigSpinner';
+import useTitle from '../../hooks/useTitle';
 import AdvertiseSection from './AdvertiseSection/AdvertiseSection';
 import AllProductsSection from './AllProductSection/AllProductsSection';
 import BrandPartner from './BrandPartner/BrandPartner';
@@ -9,6 +10,7 @@ import ContactSection from './ContactSection/ContactSection';
 import HomeSlider from './HomeSlider/HomeSlider';
 
 const Home = () => {
+  useTitle("Home")
   const [loading, setLoading] = useState(false)
 
   const { data: advertiseProducts = [] } = useQuery({

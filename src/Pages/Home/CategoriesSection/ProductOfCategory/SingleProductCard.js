@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import PrimarySpinner from '../../../../components/Spinner/PrimarySpinner';
 import { AuthContext } from '../../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../../hooks/useTitle';
+
 
 const SingleProductCard = ({ product, setModalData }) => {
     const { location, name, original_price, published_date, picture, rating, resale_price, seller_img, verify, seller_name, years_of_use, seller_email, description, _id } = product;
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
-
+    useTitle("Products-category")
     const handleAddToReport = () => {
         setLoading(true)
         const reportData = {

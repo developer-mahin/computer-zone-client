@@ -2,9 +2,11 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Shared/Footer';
 import Navbar from '../components/Shared/Navbar';
+import useTitle from '../hooks/useTitle';
 import Sidebar from '../Pages/Dashboard/Sidebar/Sidebar';
 
 const DashboardLayout = () => {
+    useTitle("Dashboard")
     return (
         <div>
             <div>

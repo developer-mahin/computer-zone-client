@@ -3,9 +3,11 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import MyProductsCard from './MyProductsCard';
 
 const MyProduct = () => {
+    useTitle("My-Products")
     const { user, logOut } = useContext(AuthContext)
 
     const { data: allProducts = [], refetch } = useQuery({

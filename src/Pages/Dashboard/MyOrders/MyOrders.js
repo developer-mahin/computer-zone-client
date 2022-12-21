@@ -4,8 +4,10 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import BigSpinner from "../../../components/Spinner/BigSpinner";
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const MyOrders = () => {
+    useTitle("My-Orders")
     const { user, logOut } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
 

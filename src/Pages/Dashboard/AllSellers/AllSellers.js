@@ -4,11 +4,12 @@ import toast from 'react-hot-toast';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import TableContent from '../../../components/TableContent/TableContent';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const AllSellers = () => {
+    useTitle("All-Sellers")
     const { logOut } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
-
     const { data: allSellers = [], refetch } = useQuery({
 
         queryKey: ["allSellers"],

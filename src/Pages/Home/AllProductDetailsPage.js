@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import SmallSpinner from '../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 
 const AllProductDetailsPage = () => {
@@ -13,7 +14,7 @@ const AllProductDetailsPage = () => {
     const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, status, _id } = product
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
-
+    useTitle(name)
     const navigation = useNavigation()
     if (navigation.state === "loading") {
         return <SmallSpinner></SmallSpinner>

@@ -4,12 +4,14 @@ import toast from 'react-hot-toast';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const AddProduct = () => {
+    useTitle("Add-Products")
     const [file, setFile] = useState(null);
     const handleChange = (file) => {
         setFile(file);

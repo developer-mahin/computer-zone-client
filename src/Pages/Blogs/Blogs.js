@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import BigSpinner from '../../components/Spinner/BigSpinner';
+import useTitle from '../../hooks/useTitle';
 import SingleBLog from './SingleBLog';
 
 
@@ -9,20 +10,7 @@ import SingleBLog from './SingleBLog';
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
     const [loading, setLoading] = useState(false)
-
-
-    // axios.get("https://computer-zone-server.vercel.app/blogs")
-    //     .then(function (response) {
-    //         setLoading(true)
-    //         setBlogs(response.data)
-    //         setLoading(false)
-    //     })
-    //     .catch(function (err) {
-    //         console.log(err.message);
-    //     })
-    //     .finally(function () {
-
-    //     })
+    useTitle("Blogs")
 
     useEffect(() => {
         setLoading(true)

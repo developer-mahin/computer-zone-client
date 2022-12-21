@@ -4,6 +4,7 @@ import { useLoaderData, useNavigation } from 'react-router-dom';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 const AdvertiseDetails = () => {
@@ -12,6 +13,7 @@ const AdvertiseDetails = () => {
     const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, _id, status } = product
     const {user} = useContext(AuthContext)
 
+    useTitle(name)
     const navigation = useNavigation()
     if (navigation.state === "loading") {
         return <BigSpinner></BigSpinner>

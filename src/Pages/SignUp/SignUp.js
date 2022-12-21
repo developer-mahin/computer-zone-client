@@ -7,10 +7,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import registerJson from "../../Assets/Lottie file/38435-register.json";
 import SmallSpinner from '../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from "../../hooks/useTitle";
 
 
 const SignUp = () => {
-
+useTitle("Sign Up")
     const {
         register,
         formState: { errors },

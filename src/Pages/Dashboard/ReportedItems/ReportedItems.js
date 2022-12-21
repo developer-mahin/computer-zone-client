@@ -3,9 +3,11 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import SingleReportItem from './SingleReportItem';
 
 const ReportedItems = () => {
+    useTitle("Reported-Items")
     const [loading, setLoading] = useState(false)
     const { logOut } = useContext(AuthContext)
 
