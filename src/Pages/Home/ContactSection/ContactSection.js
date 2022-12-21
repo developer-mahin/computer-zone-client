@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import PrimaryButton from '../../../components/Button/PrimaryButton';
 import "../../Home/HomeSlider/Slider.css"
 
@@ -12,6 +13,12 @@ const ContactSection = () => {
         backgroundRepeat: "no-repeat",
         padding: "71px 0px"
     };
+
+    const handleContact = (event)=>{
+        event.preventDefault()
+        toast.success("Successfully submit")
+    }
+
 
     return (
 
@@ -27,13 +34,14 @@ const ContactSection = () => {
                         Stay connected with us
                     </h2>
                 </div>
-                <form>
+                <form onSubmit={handleContact}>
                     <input
                         className="w-full  py-3 px-6 rounded-xl my-4 border-2"
                         placeholder="Email Address"
                         type="email"
                         name="email"
                         id=""
+                        required
                     />
                     <input
                         className="w-full  py-3 px-6 rounded-xl my-4 border-2"
@@ -41,12 +49,14 @@ const ContactSection = () => {
                         type="text"
                         name="text"
                         id=""
+                        required
                     />
                     <textarea
                         className="w-full py-3 px-6 rounded-xl my-4 border-2"
                         placeholder="Your message"
                         name="message"
                         id=""
+                        required
                         cols="30"
                         rows="3"
                     ></textarea>

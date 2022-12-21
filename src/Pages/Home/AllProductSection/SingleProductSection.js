@@ -1,58 +1,24 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import SmallSpinner from '../../../components/Spinner/SmallSpinner';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { MdFavorite } from "react-icons/md";
+
+
 
 const SingleProductSection = ({ product }) => {
 
     const { picture, name, resale_price, original_price, _id, status } = product
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
-
-
-const handleBooking = ()=>{
-    setLoading(true)
-    const bookingInfo = {
-        itemImage: picture,
-        itemName: name,
-        itemPrice: resale_price,
-        userName: user?.displayName,
-        userEmail: user?.email,
-        userPhone: "",
-        userLocation: "location",
-        productId: _id,
-        status
-    }
-
-    fetch("https://computer-zone-server.vercel.app/booking", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(bookingInfo)
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.acknowledged) {
-                toast.success(`Successfully ${name} booked`)
-                setLoading(false)
-            }
-        })
-        .catch(err => {
-            setLoading(false)
-            toast.error(err.message)
-        })
-}
-
 
     return (
         <div className="rounded-md shadow-md">
             <img src={picture} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
             <div className="flex flex-col justify-between p-6 space-y-8">
                 <div className="space-y-2">
-                    <h2 className="font-semibold tracking-wide">{name && name.slice(0, 86) + ".."}</h2>
+                    <h2 className="font-semibold tracking-wide">{name && name.slice(0, 76) + ".."}</h2>
                     <div className="text-right">
                         <div>
                             <p className="text-lg font-semibold">{resale_price} <span className='font-bold text-2xl'>৳</span>
@@ -62,8 +28,8 @@ const handleBooking = ()=>{
                         </div>
                     </div>
                 </div>
-                <button
-                onClick={handleBooking}
+                {/* <button
+                    // onClick={handleBooking}
                     type="button"
                     className="flex items-center justify-center w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary  px-6 py-3 rounded-lg text-white font-semibold hover:rounded-full"
                 >
@@ -73,7 +39,21 @@ const handleBooking = ()=>{
                     {
                         loading ? <SmallSpinner></SmallSpinner> : "Book now"
                     }
-                </button>
+                </button> */}
+                <div className='flex justify-between items-center gap-6'>
+                    <Link
+                    to={`/all_product_details/${_id}`}
+                        className="flex items-center justify-center w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary  px-6 py-2 rounded-lg text-white font-semibold hover:rounded-full"
+                    >
+                        Details
+                    </Link>
+                    {/* <button
+                        className="flex items-center justify-between w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary px-3 py-2 rounded-lg text-white font-semibold hover:rounded-full"
+                    >
+                        <MdFavorite className='text-white'></MdFavorite>
+                        <span>Add to Wishlist</span>
+                    </button> */}
+                </div>
             </div>
         </div>
     );

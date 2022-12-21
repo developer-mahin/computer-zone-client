@@ -19,7 +19,7 @@ const AllProductsSection = () => {
     })
 
 
-    
+
     return (
         <>
 
@@ -37,7 +37,7 @@ const AllProductsSection = () => {
                                 </h2>
                             </div>
                         </div>
-                        <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-9'>
+                        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-9'>
                             {
                                 products.map(product => <SingleProductSection
 

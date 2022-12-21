@@ -1,22 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigation } from 'react-router-dom';
-import BigSpinner from '../../../components/Spinner/BigSpinner';
-import SmallSpinner from '../../../components/Spinner/SmallSpinner';
-import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import SmallSpinner from '../../components/Spinner/SmallSpinner';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
-const AdvertiseDetails = () => {
+const AllProductDetailsPage = () => {
+
     const product = useLoaderData()
+    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, status, _id } = product
     const [loading, setLoading] = useState(false)
-    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, _id, status } = product
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const navigation = useNavigation()
     if (navigation.state === "loading") {
-        return <BigSpinner></BigSpinner>
+        return <SmallSpinner></SmallSpinner>
     }
-
     // booking click handler
     const handleBooking = () => {
         setLoading(true)
@@ -52,7 +53,6 @@ const AdvertiseDetails = () => {
                 toast.error(err.message)
             })
     }
-
 
     return (
         <div className='lg:py-20 py-6 bg-white px-3'>
@@ -111,4 +111,4 @@ const AdvertiseDetails = () => {
     );
 };
 
-export default AdvertiseDetails;
+export default AllProductDetailsPage;

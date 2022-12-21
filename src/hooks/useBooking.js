@@ -1,6 +1,8 @@
 import { toast } from "react-hot-toast";
 
+
 const booking = (product, user,setLoading) => {
+    
     setLoading(true)
     const bookingInfo = {
         itemImage: product.picture,
