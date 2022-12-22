@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigation } from 'react-router-dom';
+import ReviewSection from '../../../components/Shared/ReviewSection';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
@@ -11,7 +12,7 @@ const AdvertiseDetails = () => {
     const product = useLoaderData()
     const [loading, setLoading] = useState(false)
     const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, _id, status } = product
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     useTitle(name)
     const navigation = useNavigation()
@@ -23,9 +24,9 @@ const AdvertiseDetails = () => {
     const handleBooking = () => {
         setLoading(true)
         const bookingInfo = {
-            itemImage:picture,
+            itemImage: picture,
             itemName: name,
-            itemPrice:resale_price,
+            itemPrice: resale_price,
             userName: user?.displayName,
             userEmail: user?.email,
             userPhone: "",
@@ -109,6 +110,9 @@ const AdvertiseDetails = () => {
                     </div>
                 </div>
             </div>
+            <ReviewSection
+                product={product}
+            ></ReviewSection>
         </div>
     );
 };
