@@ -64,8 +64,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <li>
-                    <Link className="font-semibold" to="/blogs">
+                <li className='text-left'>
+                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[60px]" to="/blogs">
                         Blogs
                     </Link>
                 </li>
@@ -76,7 +76,7 @@ const Navbar = () => {
                             onClick={handleLogOut}
                             className=''
                         >
-                            <span className="px-6 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold rounded-full">
+                            <span className="px-6 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold rounded-full my-5">
                                 Sign Out
                             </span>
                         </li></> : <div className='md:flex'>
@@ -113,7 +113,7 @@ const Navbar = () => {
                         >
                             <path d='M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z' />
                         </svg>
-                        <span className='md:hidden block font-medium'>Dashboard</span>
+                        <span className='md:hidden block font-medium text-white'>Dashboard</span>
                     </button>
 
                     {isDropdownOpen && (
@@ -174,7 +174,7 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabIndex={1}
-                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box"
+                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#0F0826] rounded-box"
                         >
                             {menuItems}
                         </ul>

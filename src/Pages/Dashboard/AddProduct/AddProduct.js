@@ -48,11 +48,11 @@ const AddProduct = () => {
     }, [user?.email, logOut])
 
 
-    if(userRoleLoading){
+    if (userRoleLoading) {
         return <BigSpinner></BigSpinner>
     }
 
-    const {verify} = userData;
+    const { verify } = userData;
 
     const handleAddProduct = (event) => {
         setLoading(true)
@@ -67,6 +67,28 @@ const AddProduct = () => {
         const category = parseInt(form.category.value);
         const location = form.location.value;
         const rating = form.rating.value;
+        const brand = form.brand.value;
+        const model = form.model.value;
+        const processor = form.processor.value;
+        const ram = form.ram.value;
+        const ssd = form.ssd.value;
+        const display = form.display.value;
+        const graphics = form.graphics.value;
+        const operating_System = form.operating_System.value;
+        const battery = form.battery.value;
+        const utility = form.utility.value;
+        const webcam = form.webcam.value;
+        const weight = form.weight.value;
+        const color = form.color.value;
+        const dimensions = form.dimensions.value;
+        const body_material = form.body_material.value;
+        const condition = form.condition.value;
+        const warranty = form.warranty.value;
+
+
+
+
+
 
 
         const formData = new FormData()
@@ -95,7 +117,25 @@ const AddProduct = () => {
                     picture: data.data.display_url,
                     condition_type: type,
                     description,
-                    status: "Available"
+                    status: "Available",
+                    brand,
+                    model,
+                    processor,
+                    ram,
+                    ssd,
+                    display,
+                    graphics,
+                    operating_System,
+                    battery,
+                    utility,
+                    webcam,
+                    weight,
+                    color,
+                    dimensions,
+                    body_material,
+                    condition,
+                    warranty
+
                 }
                 // save product in db
                 fetch("https://computer-zone-server.vercel.app/addProduct", {
@@ -147,11 +187,7 @@ const AddProduct = () => {
                 </div>
             </div>
             <form onSubmit={handleAddProduct} className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
-                <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm">
-                    <div className="space-y-2 col-span-full lg:col-span-1">
-                        <p className="font-medium text-gray-300">Product Information</p>
-
-                    </div>
+                <fieldset className="">
                     <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm text-gray-300">Product name</label>
@@ -184,7 +220,6 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Description"
                                 className="input input-bordered w-full font-medium"
-                                required
                             />
                         </div>
 
@@ -232,6 +267,182 @@ const AddProduct = () => {
                             />
                         </div>
 
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Brand</label>
+                            <input
+                                name="brand"
+                                type="text"
+                                placeholder="Brand"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Model</label>
+                            <input
+                                name="model"
+                                type="text"
+                                placeholder="Model"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Processor</label>
+                            <input
+                                name="processor"
+                                type="text"
+                                placeholder="Processor"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Ram</label>
+                            <input
+                                name="ram"
+                                type="text"
+                                placeholder="Ram"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">SSD</label>
+                            <input
+                                name="ssd"
+                                type="text"
+                                placeholder="SSD"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Display</label>
+                            <input
+                                name="display"
+                                type="text"
+                                placeholder="Display"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Graphics</label>
+                            <input
+                                name="graphics"
+                                type="text"
+                                placeholder="Graphics"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Operating System</label>
+                            <input
+                                name="operating_System"
+                                type="text"
+                                placeholder="Operating System"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Battery</label>
+                            <input
+                                name="battery"
+                                type="text"
+                                placeholder="Battery"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Utility</label>
+                            <input
+                                name="utility"
+                                type="text"
+                                placeholder="Utility"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+
+
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Webcam</label>
+                            <input
+                                name="webcam"
+                                type="text"
+                                placeholder="Webcam"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Weight</label>
+                            <input
+                                name="weight"
+                                type="text"
+                                placeholder="Weight"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Color</label>
+                            <input
+                                name="color"
+                                type="text"
+                                placeholder="Color"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Dimensions (W x D x H)</label>
+                            <input
+                                name="dimensions"
+                                type="text"
+                                placeholder="Dimensions (W x D x H)"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Body Material</label>
+                            <input
+                                name="body_material"
+                                type="text"
+                                placeholder="Body Material"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Condition</label>
+                            <input
+                                name="condition"
+                                type="text"
+                                placeholder="Condition"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+                        <div className="col-span-full sm:col-span-2">
+                            <label className="text-sm text-gray-300">Warranty</label>
+                            <input
+                                name="warranty"
+                                type="text"
+                                placeholder="Warranty"
+                                className="input input-bordered w-full font-medium"
+                                required
+                            />
+                        </div>
+
 
                         <div className="col-span-full sm:col-span-2">
                             <label className="text-sm text-gray-300">Location</label>
@@ -274,6 +485,10 @@ const AddProduct = () => {
                         </div>
                     </div>
                 </fieldset>
+
+
+
+
                 <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm ">
                     <div className="space-y-2 col-span-full lg:col-span-1">
                         <p className="font-medium text-gray-300">Seller Information</p>

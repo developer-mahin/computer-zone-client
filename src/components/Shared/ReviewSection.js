@@ -50,7 +50,7 @@ const ReviewSection = ({ product }) => {
   }
 
 
-  const { data: allReview = [], refetch } = useQuery({
+  const { data: allReviews = [], refetch } = useQuery({
     queryKey: ["allReview"],
     queryFn: async () => {
       const res = await fetch(`https://computer-zone-server.vercel.app/product-review?id=${_id}`, {
@@ -93,17 +93,27 @@ const ReviewSection = ({ product }) => {
           }
         </PrimaryButton>
       </form>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 lg:mt-12 mt-3">
+      <>
 
         {
-          allReview.map(singleReview => <ReviewCard
-            key={singleReview._id}
-            singleReview={singleReview}
-            refetch={refetch}
-          ></ReviewCard>)
+          allReviews.length ? <>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 lg:mt-12 mt-3">
+
+              {
+                allReviews?.map(singleReview => <ReviewCard
+                  key={singleReview._id}
+                  singleReview={singleReview}
+                  refetch={refetch}
+                ></ReviewCard>)
+              }
+
+            </div>
+          </> : <>
+            <h2>There are no reviews in this product</h2>
+          </>
         }
 
-      </div>
+      </>
     </div>
   );
 };

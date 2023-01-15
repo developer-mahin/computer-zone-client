@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigation } from 'react-router-dom';
+import ProductsDetailsSections from '../../components/Shared/ProductsDetailsSections';
 import ReviewSection from '../../components/Shared/ReviewSection';
 import SmallSpinner from '../../components/Spinner/SmallSpinner';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -12,7 +13,9 @@ import useTitle from '../../hooks/useTitle';
 const AllProductDetailsPage = () => {
 
     const product = useLoaderData()
-    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, status, _id } = product
+
+    const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, status, _id, processor, ram, ssd, display, graphics, operating_System, battery } = product
+
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
     useTitle(name)
@@ -65,29 +68,47 @@ const AllProductDetailsPage = () => {
                             <img src={picture} className="w-full h-auto" alt="" />
                         </div>
                         <div className="">
-                            <h2 className="card-title">{name}</h2>
-                            <p className='font-medium mt-4'>{description}</p>
+                            <h2 className="card-title lg:text-3xl text-2xl text-gray-600 font-bold">{name}</h2>
+                            {
+                                description &&
+                                <p className='font-medium mt-4'>{description}</p>
+                            }
 
-                            <div className='flex justify-between lg:items-center flex-col lg:flex-row '>
+                            <div className=''>
                                 <div className='lg:my-0 my-3'>
-                                    <p className='font-medium'>🔹 Resale Price: {resale_price}</p>
-                                    <p className='font-medium'>🔹 Original Price: {original_price}</p>
-                                </div>
-                                <div className='flex items-center gap-3 lg:my-6 mt-0 my-0'>
-                                    <div className='relative'>
-                                        <img src={seller_img} className="w-14 h-14 rounded-full border-4 border-green-500 object-cover" alt="" />
-                                        <div className='absolute top-0 right-0'>
-                                            {
-                                                verify && <>
-                                                    <img className='w-5 h-5 rounded-full' src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Facebook_verified_account_checkmark.jpg" alt="" />
-                                                </>
-
-                                            }
-                                        </div>
+                                    <div className='lg:my-6 my-2'>
+                                        <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:
+                                            {resale_price}</p>
+                                        <p className='font-medium text-[#FF7D08]'>🔹 Original Price:{original_price}</p>
                                     </div>
-                                    <div>
-                                        <p className='font-medium lg:text-base text-sm'>Email: {seller_email ? seller_email : "Not Available"}</p>
-                                        <p className='font-medium lg:text-base text-sm'>Name: {seller_name ? seller_name : "Not Available"}</p>
+                                    <ul>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Processor: {processor}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Ram: {ram}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 SSD: {ssd}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Display: {display}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Graphics: {graphics}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Operating System: {operating_System}</li>
+                                        <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Battery: {battery}</li>
+                                    </ul>
+                                </div>
+                                <div className='lg:my-6 mt-0 my-0'>
+                                    <h2 className='text-xl font-medium py-2'>Seller Details</h2>
+                                    <div className='flex items-center gap-3 '>
+                                        <div className='relative'>
+                                            <img src={seller_img} className="w-14 h-14 rounded-full border-4 border-green-500 object-cover" alt="" />
+                                            <div className='absolute top-0 right-0'>
+                                                {
+                                                    verify && <>
+                                                        <img className='w-5 h-5 rounded-full' src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Facebook_verified_account_checkmark.jpg" alt="" />
+                                                    </>
+
+                                                }
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p className='font-medium lg:text-base text-sm'>Email: {seller_email ? seller_email : "Not Available"}</p>
+                                            <p className='font-medium lg:text-base text-sm'>Name: {seller_name ? seller_name : "Not Available"}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +131,9 @@ const AllProductDetailsPage = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='border lg:px-6 px-3 lg:py-10 py-3  rounded shadow-lg lg:mt-10 mt-6 container mx-auto'>
+                <ProductsDetailsSections product={product}></ProductsDetailsSections>
             </div>
             <div>
                 <ReviewSection product={product}></ReviewSection>

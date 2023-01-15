@@ -3,7 +3,8 @@ import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 
 const MyProductsCard = ({ product, refetch }) => {
-    const { description, name, original_price, picture, published_date, resale_price, years_of_use, status } = product;
+    const { name, original_price, picture, published_date, resale_price, years_of_use, status } = product;
+
     const [loading, setLoading] = useState(false)
 
     const handleAddToAdvertise = () => {
@@ -43,9 +44,6 @@ const MyProductsCard = ({ product, refetch }) => {
                         <h2 className="max-w-lg mb-3 font-sans text-xl font-bold tracking-tight text-gray-300 lg:text-2xl sm:text-3xl sm:leading-none">
                             {name}
                         </h2>
-                        <p className="text-base text-gray-300 md:text-lg">
-                            {description}
-                        </p>
                         <ul className='text-gray-300'>
                             <li>
                                 🔹 Original price: {original_price}
