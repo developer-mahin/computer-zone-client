@@ -15,9 +15,9 @@ const ProductOfCategory = () => {
 
 
     return (
-        <div className="flex flex-col container mx-auto space-y-4 sm:p-10 bg-gray-200 rounded">
+        <div className="flex flex-col container mx-auto space-y-4 sm:p-10 rounded">
             <h2 className="text-xl font-semibold mt-4 px-3">Category products</h2>
-            <ul className="grid  divide-y divide-gray-700 px-3 gap-4">
+            <ul className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 divide-y divide-gray-700 px-3 gap-4">
                 {
 
                     products.map(product => <SingleProductCard

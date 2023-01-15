@@ -12,7 +12,6 @@ import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../Pages/Dashboard/ReportedItems/ReportedItems";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import AdvertiseDetails from "../Pages/Home/AdvertiseSection/AdvertiseDetails";
 import AllProductDetailsPage from "../Pages/Home/AllProductDetailsPage";
 import ProductOfCategory from "../Pages/Home/CategoriesSection/ProductOfCategory/ProductOfCategory";
 import Home from "../Pages/Home/Home";
@@ -46,7 +45,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/advertiseDetails/:id",
-                element: <PrivateRoute><AdvertiseDetails></AdvertiseDetails></PrivateRoute>,
+                element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`https://computer-zone-server.vercel.app/advertiseDetails/${params.id}`)
                 }
@@ -54,6 +53,13 @@ const router = createBrowserRouter([
             {
                 path: "/all_product_details/:id",
                 element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
+                loader: ({ params }) => {
+                    return fetch(`https://computer-zone-server.vercel.app/all_product_details/${params.id}`)
+                }
+            },
+            {
+                path: "/category_products_details/:id",
+                element: <AllProductDetailsPage></AllProductDetailsPage>,
                 loader: ({ params }) => {
                     return fetch(`https://computer-zone-server.vercel.app/all_product_details/${params.id}`)
                 }
