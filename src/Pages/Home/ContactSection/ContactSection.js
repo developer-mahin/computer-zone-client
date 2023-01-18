@@ -14,14 +14,13 @@ const ContactSection = () => {
         padding: "71px 0px"
     };
 
-    const handleContact = (event)=>{
+    const handleContact = (event) => {
         event.preventDefault()
         toast.success("Successfully submit")
     }
 
 
     return (
-
         <div style={contactBg}>
             <div className="lg:w-1/3 w-full mx-auto px-3 lg:px-0">
                 <div className=" text-center">

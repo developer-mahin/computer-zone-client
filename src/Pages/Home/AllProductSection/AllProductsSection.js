@@ -1,31 +1,36 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import BigSpinner from '../../../components/Spinner/BigSpinner';
 import SingleProductSection from './SingleProductSection';
 
 const AllProductsSection = () => {
-
     const [loading, setLoading] = useState(false)
+    const [page, setPage] = useState(0)
+    const [products, setProducts] = useState([])
+    const [count, setCount] = useState(0)
+    const [size, setSize] = useState(4)
 
-    const { data: products = [] } = useQuery({
-        queryKey: ["products"],
-        queryFn: async () => {
-            setLoading(true)
-            const res = await fetch("https://computer-zone-server.vercel.app/products")
-            const data = await res.json()
-            setLoading(false)
-            return data;
-        }
-    })
+    useEffect(() => {
+        setLoading(true)
+        const url = `https://computer-zone-server.vercel.app/products?page=${page}&size=${size}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data.products)
+                setCount(data.count)
+                setLoading(false)
+            })
 
+    }, [page, size])
+
+    
+    const pages = Math.ceil(count / size)
 
 
     return (
         <>
-
             {
                 loading ? <BigSpinner></BigSpinner> : <>
-
                     <div className='container mx-auto lg:py-14 py-8 px-3'>
                         <div className=" text-center">
                             <div className="">
@@ -39,7 +44,7 @@ const AllProductsSection = () => {
                         </div>
                         <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-9'>
                             {
-                                products.map(product => <SingleProductSection
+                                products?.map(product => <SingleProductSection
 
                                     key={product._id}
                                     product={product}
@@ -48,10 +53,34 @@ const AllProductsSection = () => {
                             }
                         </div>
                     </div>
-
                 </>
             }
 
+            <div className='text-center lg:pb-10 pb-4'>
+                <>
+                    {
+                        !pages.length && [...Array(pages).keys()]?.map(number => <button
+                            key={number}
+                            className={page === number ? "bg-primary px-2 py-1 text-white font-semibold mx-2 rounded" : "bg-secondary px-2 py-1 text-white font-semibold mx-2 rounded"}
+                            onClick={() => setPage(number)}
+                        >
+                            {number + 1}
+                        </button>)
+                    }
+                </>
+                <>
+                    <select
+                       
+                        onChange={(e) => setSize(e.target.value)}
+                        className='bg-secondary px-2 py-1 text-white font-semibold mx-2 rounded'
+                    >
+                        <option defaultValue={4}>4</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                        <option value="10">10</option>
+                    </select>
+                </>
+            </div>
         </>
     );
 };

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const SingleProductSection = ({ product }) => {
     const { picture, name, resale_price, original_price, _id } = product
 
+
     return (
         <Link to={`/all_product_details/${_id}`}>
             <div className="rounded-md shadow-md hover:shadow-2xl cursor-pointer">
