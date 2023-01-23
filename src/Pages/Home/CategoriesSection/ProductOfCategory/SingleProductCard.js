@@ -61,9 +61,9 @@ const SingleProductCard = ({ product, setModalData }) => {
                                 <h3 className="text-lg font-semibold leading-snug sm:pr-8">{name}</h3>
                                 <p className="text-sm font-medium dark:text-gray-400">{published_date}</p>
                                 <div className='lg:my-6 my-2'>
-                                    <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:<span className='font-bold text-2xl mx-1'>৳</span>
+                                    <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>
                                         {resale_price}</p>
-                                    <p className='font-medium text-[#FF7D08]'>🔹 Original Price:<span className='font-bold text-2xl mx-1'>৳</span>{original_price}</p>
+                                    <p className='font-medium text-[#FF7D08]'>🔹 Original Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>{original_price}</p>
                                 </div>
                                 <div>
                                     <h2 className='text-xl font-medium'>Seller Details</h2>

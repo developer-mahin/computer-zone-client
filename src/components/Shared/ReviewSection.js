@@ -22,9 +22,9 @@ const ReviewSection = ({ product }) => {
     const reviewInfo = {
       productId: _id,
       review,
-      userName: user?.displayName,
-      userImg: user?.photoURL,
-      userEmail: user?.email,
+      userName: user && user?.displayName,
+      userImg: user && user?.photoURL,
+      userEmail: user && user?.email,
       date
     }
 

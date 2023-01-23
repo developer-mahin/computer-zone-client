@@ -77,9 +77,9 @@ const AllProductDetailsPage = () => {
                             <div className=''>
                                 <div className='lg:my-0 my-3'>
                                     <div className='lg:my-6 my-2'>
-                                        <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:<span className='font-bold text-2xl mx-1'>৳</span>
+                                        <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>
                                             {resale_price}</p>
-                                        <p className='font-medium text-[#FF7D08]'>🔹 Original Price:<span className='font-bold text-2xl mx-1'>৳</span>{original_price}</p>
+                                        <p className='font-medium text-[#FF7D08]'>🔹 Original Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>{original_price}</p>
                                     </div>
                                     <ul>
                                         <li className='lg:text-lg text-base my-2 text-gray-700'>🔹 Processor: {processor}</li>

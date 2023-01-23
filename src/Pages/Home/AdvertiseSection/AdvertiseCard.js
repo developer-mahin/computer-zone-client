@@ -16,8 +16,8 @@ const AdvertiseCard = ({ product }) => {
 
                         <div className=''>
                             <div>
-                                <p className='font-medium'>🔹 Resale Price:<span className='font-bold text-2xl mx-1'>৳</span>{resale_price}</p>
-                                <p className='font-medium'>🔹 Original Price:<span className='font-bold text-2xl mx-1'>৳</span>{original_price}</p>
+                                <p className='font-medium'>🔹 Resale Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>{resale_price}</p>
+                                <p className='font-medium'>🔹 Original Price:<span className='font-bold lg:text-2xl mx-1'>৳</span>{original_price}</p>
                             </div>
                             <div className='flex items-center gap-3 my-3'>
                                 <div className='relative'>

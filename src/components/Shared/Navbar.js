@@ -9,6 +9,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const { user, logOut } = useContext(AuthContext)
+    
 
     const handleLogOut = () => {
         logOut()
@@ -47,7 +48,7 @@ const Navbar = () => {
                                     Categories
                                     <svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                                 </Link>
-                                <ul className="p-2 bg-base-100 text-black font-medium rounded-xl z-50">
+                                <ul className="p-2 bg-[#0F0826] text-white font-medium rounded-xl z-50">
 
                                     {
                                         categories.map(category => <li
@@ -65,12 +66,12 @@ const Navbar = () => {
                     </div>
                 </div>
                 <li className='text-left'>
-                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[60px]" to="/products">
+                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[45px]" to="/products">
                         Products
                     </Link>
                 </li>
                 <li className='text-left'>
-                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[60px]" to="/blogs">
+                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[65px]" to="/blogs">
                         Blogs
                     </Link>
                 </li>
@@ -84,7 +85,7 @@ const Navbar = () => {
                             <span className="px-6 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold rounded-full my-5">
                                 Sign Out
                             </span>
-                        </li></> : <div className='md:flex'>
+                        </li></> : <div className='md:flex lg:ml-0 md:ml-0 -ml-[48px]'>
 
                             <li tabIndex={0}>
                                 <Link className="font-semibold justify-between" to="/login">
@@ -161,7 +162,7 @@ const Navbar = () => {
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                        {<label onClick={() => setOpen(!open)} tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -176,7 +177,7 @@ const Navbar = () => {
                                     d="M4 6h16M4 12h8m-8 6h16"
                                 />
                             </svg>
-                        </label>
+                        </label>}
                         <ul
                             tabIndex={1}
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#0F0826] rounded-box"

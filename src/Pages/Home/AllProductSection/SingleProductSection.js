@@ -15,9 +15,9 @@ const SingleProductSection = ({ product }) => {
                         <h2 className="font-semibold tracking-wide">{name && name.slice(0, 76) + ".."}</h2>
                         <div className="text-right">
                             <div>
-                                <p className="text-lg font-semibold">{resale_price} <span className='font-bold text-2xl'>৳</span>
+                                <p className="text-lg font-semibold">{resale_price} <span className='font-bold lg:text-2xl'>৳</span>
                                 </p>
-                                <p className="text-sm line-through">{original_price}৳
+                                <p className="text-sm line-through">{original_price}<span className='font-bold lg:text-2xl'>৳</span>
                                 </p>
                             </div>
                         </div>
