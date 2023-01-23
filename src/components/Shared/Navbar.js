@@ -65,6 +65,11 @@ const Navbar = () => {
                     </div>
                 </div>
                 <li className='text-left'>
+                    <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[60px]" to="/products">
+                        Products
+                    </Link>
+                </li>
+                <li className='text-left'>
                     <Link className="font-semibold lg:ml-0 md:ml-0 -ml-[60px]" to="/blogs">
                         Blogs
                     </Link>

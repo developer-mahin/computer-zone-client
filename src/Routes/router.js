@@ -13,6 +13,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../Pages/Dashboard/ReportedItems/ReportedItems";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AllProductDetailsPage from "../Pages/Home/AllProductDetailsPage";
+import AllProductsSection from "../Pages/Home/AllProductSection/AllProductsSection";
 import ProductOfCategory from "../Pages/Home/CategoriesSection/ProductOfCategory/ProductOfCategory";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -69,6 +70,13 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs></Blogs>,
+                // loader: () => {
+                //     return fetch("https://computer-zone-server.vercel.app/blogs")
+                // }
+            },
+            {
+                path: "/products",
+                element: <AllProductsSection></AllProductsSection>,
                 // loader: () => {
                 //     return fetch("https://computer-zone-server.vercel.app/blogs")
                 // }
