@@ -49,17 +49,22 @@ const SingleProductCard = ({ product, setModalData }) => {
 
 
     return (
-        <div className="rounded-xl shadow-lg hover:shadow-2xl border-none">
+        <div className="rounded-xl shadow-lg hover:shadow-2xl border-none bg-white">
             <Link to={`/category_products_details/${_id}`} >
                 <div className="">
                     <div>
-                        <img className="w-full lg:h-[250px] h-full rounded-xl outline-none" src={picture} alt="Polaroid camera" />
+                        <img className="w-full lg:h-[350px] h-full rounded-xl outline-none" src={picture} alt="Polaroid camera" />
                     </div>
                     <div className="flex lg:col-span-2 flex-col justify-between w-full py-4 px-3">
                         <div className="flex justify-between w-full pb-2 space-x-2">
                             <div className="space-y-1">
                                 <h3 className="text-lg font-semibold leading-snug sm:pr-8">{name}</h3>
                                 <p className="text-sm font-medium dark:text-gray-400">{published_date}</p>
+                                <div className='lg:my-6 my-2'>
+                                    <p className='font-medium text-[#FF7D08]'>🔹 Resale Price:<span className='font-bold text-2xl mx-1'>৳</span>
+                                        {resale_price}</p>
+                                    <p className='font-medium text-[#FF7D08]'>🔹 Original Price:<span className='font-bold text-2xl mx-1'>৳</span>{original_price}</p>
+                                </div>
                                 <div>
                                     <h2 className='text-xl font-medium'>Seller Details</h2>
 
@@ -112,7 +117,7 @@ const SingleProductCard = ({ product, setModalData }) => {
                 </div>
             </Link>
             <div className='lg:my-4 my-2 px-3'>
-                <Link to={`/category_products_details/${_id}`} className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary px-6 py-3 rounded-lg text-black font-semibold hover:rounded-full w-full btn border-none">Details</Link>
+                <Link to={`/category_products_details/${_id}`} className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary px-6 py-3 rounded-lg text-white font-semibold hover:rounded-full w-full btn border-none">Details</Link>
             </div>
         </div>
     );

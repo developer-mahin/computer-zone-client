@@ -216,6 +216,7 @@ const AddProduct = () => {
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm text-gray-300">Description</label>
                             <input
+                                readOnly
                                 name="description"
                                 type="text"
                                 placeholder="Description"

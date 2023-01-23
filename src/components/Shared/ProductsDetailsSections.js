@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductsDetailsSections = ({ product }) => {
 
-    const { processor, ram, ssd, display, graphics, operating_System, battery, brand, model, utility, webcam,weight, color, dimensions,body_material, condition, warranty } = product
+    const { processor, ram, ssd, display, graphics, operating_System, battery, brand, model, utility, webcam, weight, color, dimensions, body_material, condition, warranty } = product
     console.log(product)
 
     return (

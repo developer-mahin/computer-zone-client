@@ -6,14 +6,14 @@ const ReviewCard = ({ singleReview, refetch }) => {
     
 
     return (
-        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 border shadow-md hover:shadow-xl hover:cursor-pointer">
             <div className="flex justify-between p-4">
                 <div className="flex space-x-4">
                     <div>
-                        <img src={userImg} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
+                        <img src={userImg ? userImg : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYagOwLRJ-6wCoDjllZa-DxUPNANF8vfXA2w&usqp=CAU"} alt="" className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
                     </div>
                     <div>
-                        <h4 className="font-bold">{userName}</h4>
+                        <h4 className="font-bold">{userName ? userName : "User Name"}</h4>
                         <span className="text-xs dark:text-gray-400">
                            Published: {date.slice(0, 10)}
                         </span>

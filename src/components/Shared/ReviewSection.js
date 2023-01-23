@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import PrimaryButton from "../Button/PrimaryButton";
+import BigSpinner from "../Spinner/BigSpinner";
 import SmallSpinner from "../Spinner/SmallSpinner";
 import ReviewCard from "./ReviewCard";
 
@@ -50,7 +51,7 @@ const ReviewSection = ({ product }) => {
   }
 
 
-  const { data: allReviews = [], refetch } = useQuery({
+  const { data: allReviews = [], isLoading, refetch } = useQuery({
     queryKey: ["allReview"],
     queryFn: async () => {
       const res = await fetch(`https://computer-zone-server.vercel.app/product-review?id=${_id}`, {
@@ -62,6 +63,11 @@ const ReviewSection = ({ product }) => {
       return data;
     }
   })
+
+  if (isLoading) {
+    return <BigSpinner></BigSpinner>
+  }
+
 
   refetch()
 
@@ -81,10 +87,8 @@ const ReviewSection = ({ product }) => {
         <textarea
           name="review"
           id=""
-          cols="30"
-          rows="4"
           placeholder="Write your review..."
-          className="lg:w-1/2 w-full rounded shadow my-3 px-6 py-2 border"
+          className="lg:w-1/2 w-full rounded lg:h-24 sm:h-16 shadow my-3 px-6 py-3 border"
         ></textarea>
         <br />
         <PrimaryButton>

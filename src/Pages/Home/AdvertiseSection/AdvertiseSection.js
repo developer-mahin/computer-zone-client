@@ -2,8 +2,6 @@ import React from 'react';
 import AdvertiseCard from './AdvertiseCard';
 
 
-
-
 const AdvertiseSection = ({ advertiseProducts }) => {
     return (
         <>
@@ -18,7 +16,7 @@ const AdvertiseSection = ({ advertiseProducts }) => {
                         </h2>
                     </div>
                 </div>
-                <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
+                <div className='grid lg:grid-cols-3 grid-cols-1 gap-6'>
                     {
                         advertiseProducts.map(product => <AdvertiseCard
                             key={product._id}

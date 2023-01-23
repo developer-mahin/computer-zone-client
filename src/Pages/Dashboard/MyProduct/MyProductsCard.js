@@ -69,7 +69,7 @@ const MyProductsCard = ({ product, refetch }) => {
                                 handleAddToAdvertise();
                             }}
                             disabled={status === "Sold" && true}
-                            className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-gray-800 transition-colors duration-200 lg:w-1/2 w-full"
+                            className="btn bg-gradient-to-r from-secondary to-primary border-0 hover:rounded-full font-semibold text-white transition-colors duration-200 lg:w-1/2 w-full"
                         >
                             {
                                 loading ? <SmallSpinner></SmallSpinner> : "Add To Advertise"
