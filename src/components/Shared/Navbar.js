@@ -162,7 +162,7 @@ const Navbar = () => {
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        {<label onClick={() => setOpen(!open)} tabIndex={0} className="btn btn-ghost lg:hidden">
+                        {<label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"

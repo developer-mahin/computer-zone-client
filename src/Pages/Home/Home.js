@@ -8,6 +8,7 @@ import BrandPartner from './BrandPartner/BrandPartner';
 import CategoriesSection from './CategoriesSection/CategoriesSection';
 import ContactSection from './ContactSection/ContactSection';
 import HomeSlider from './HomeSlider/HomeSlider';
+import Testimonial from './Testimonial/Testimonial';
 
 const Home = () => {
   useTitle("Home")
@@ -43,6 +44,7 @@ const Home = () => {
       }
 
       <AllProductsSection></AllProductsSection>
+      <Testimonial></Testimonial>
       <ContactSection></ContactSection>
     </div>
   );
