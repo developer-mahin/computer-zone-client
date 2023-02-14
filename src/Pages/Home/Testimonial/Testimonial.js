@@ -64,14 +64,14 @@ const Testimonial = () => {
                             testimonialInfo.map(info => <SwiperSlide
                                 key={info.id}
                             >
-                                <div className='lg:px-44'>
+                                <div className='lg:px-44 px-10'>
                                     <div>
                                         <div className='flex items-center justify-center'>
                                             <img src={info.img} className="w-40 h-40 rounded-full object-cover" alt="" />
                                         </div>
                                         <div className='text-center py-6'>
                                             <h3 className='font-semibold text-xl'>{info.name}</h3>
-                                            <p>{info.review}</p>
+                                            <p className='lg:text-base text-sm'>{info.review}</p>
                                         </div>
                                     </div>
                                 </div>
