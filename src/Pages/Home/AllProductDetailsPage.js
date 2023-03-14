@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import ProductsDetailsSections from '../../components/Shared/ProductsDetailsSections';
 import ReviewSection from '../../components/Shared/ReviewSection';
 import SmallSpinner from '../../components/Spinner/SmallSpinner';
@@ -13,7 +13,7 @@ import useTitle from '../../hooks/useTitle';
 const AllProductDetailsPage = () => {
 
     const product = useLoaderData()
-
+    const navigate = useNavigate()
     const { picture, name, description, resale_price, original_price, seller_img, seller_name, seller_email, verify, status, _id, processor, ram, ssd, display, graphics, operating_System, battery } = product
 
     const [loading, setLoading] = useState(false)
@@ -50,6 +50,7 @@ const AllProductDetailsPage = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success(`Successfully ${product.name} booked`)
+                    navigate("/dashboard/my-orders")
                     setLoading(false)
                 }
             })
@@ -58,6 +59,8 @@ const AllProductDetailsPage = () => {
                 toast.error(err.message)
             })
     }
+
+
 
     return (
         <div className='lg:py-20 py-6 bg-white px-3'>
@@ -123,7 +126,7 @@ const AllProductDetailsPage = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
                                     </svg>
                                     {
-                                        loading ? <SmallSpinner></SmallSpinner> : "Book Now"
+                                        loading ? <SmallSpinner></SmallSpinner> : "Buy Now"
                                     }
                                 </button>
 

@@ -46,16 +46,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "/advertiseDetails/:id",
-                element: <AllProductDetailsPage></AllProductDetailsPage>,
-                // element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
+                element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`https://computer-zone-server.vercel.app/advertiseDetails/${params.id}`)
                 }
             },
             {
                 path: "/all_product_details/:id",
-                element: <AllProductDetailsPage></AllProductDetailsPage>,
-                // element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
+                element: <PrivateRoute><AllProductDetailsPage></AllProductDetailsPage></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`https://computer-zone-server.vercel.app/all_product_details/${params.id}`)
                 }
@@ -90,8 +88,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/category/:id",
-                element: <ProductOfCategory></ProductOfCategory>,
-                // element: <PrivateRoute><ProductOfCategory></ProductOfCategory></PrivateRoute>,
+                element: <PrivateRoute><ProductOfCategory></ProductOfCategory></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`https://computer-zone-server.vercel.app/category/${params.id}`)
                 }

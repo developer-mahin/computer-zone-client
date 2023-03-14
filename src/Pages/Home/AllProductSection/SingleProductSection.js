@@ -7,8 +7,8 @@ const SingleProductSection = ({ product }) => {
 
 
     return (
-        <Link to={`/all_product_details/${_id}`} className="bg-white rounded-xl">
-            <div className="rounded-md shadow-md hover:shadow-2xl cursor-pointer">
+        <Link to={`/all_product_details/${_id}`} className="bg-white rounded-md shadow-md hover:shadow-2xl cursor-pointer">
+            <div className="">
                 <img src={picture} alt="" className="object-cover object-center w-full rounded-t-xl h-72" />
                 <div className="flex flex-col justify-between p-6 space-y-8">
                     <div className="space-y-2">
