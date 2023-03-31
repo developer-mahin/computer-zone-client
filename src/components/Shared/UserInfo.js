@@ -15,7 +15,7 @@ const UserInfo = () => {
                 <div className='p-6 border shadow rounded-xl'>
                     <h3 className='text-xl font-bold text-gray-600'>Seller Dashboard</h3>
                     <div>
-                        <p>Email: samimosman@gmail.com</p>
+                        <p>Email: developeromg8@gamil.com</p>
                         <p>Password: 123456$M</p>
                     </div>
                 </div>

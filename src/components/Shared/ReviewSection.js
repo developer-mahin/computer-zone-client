@@ -89,6 +89,7 @@ const ReviewSection = ({ product }) => {
           id=""
           placeholder="Write your review..."
           className="lg:w-1/2 w-full rounded lg:h-24 sm:h-16 shadow my-3 px-6 py-3 border"
+          required
         ></textarea>
         <br />
         <PrimaryButton>
