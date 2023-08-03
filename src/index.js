@@ -15,10 +15,8 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-
-          <App />
-          <Toaster />
-
+        <App />
+        <Toaster />
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>

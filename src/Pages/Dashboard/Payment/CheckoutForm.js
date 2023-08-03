@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import SmallSpinner from '../../../components/Spinner/SmallSpinner';
 import "./Checkout.css";
+import { toast } from 'react-hot-toast';
 
 
 const CheckoutForm = ({ booking }) => {
@@ -98,6 +99,7 @@ const CheckoutForm = ({ booking }) => {
                 .then(data => {
                     if (data.insertedId) {
                         setSuccess("Congrats! your payment has been success")
+                        toast.success("Congrats! your payment has been success")
                         setTransactionId(paymentIntent.id)
                     }
                 })

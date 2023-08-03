@@ -23,7 +23,7 @@ const AllProductsSection = () => {
 
     }, [page, size])
 
-    
+
     const pages = Math.ceil(count / size)
 
 
@@ -70,7 +70,7 @@ const AllProductsSection = () => {
                 </>
                 <>
                     <select
-                       
+
                         onChange={(e) => setSize(e.target.value)}
                         className='bg-secondary px-2 py-1 text-white font-semibold mx-2 rounded'
                     >
